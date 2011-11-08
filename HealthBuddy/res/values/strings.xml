@@ -2,6 +2,7 @@
 <resources>
 
     <string name="hello">Hello World, HealthBuddyActivity I changed this for fun again!</string>
+    <string name="me_too">Happy days!!!!!!!!!!</string>
     <string name="app_name">HealthBuddy</string>
 
 </resources>
