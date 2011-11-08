@@ -10,4 +10,7 @@ public class HealthBuddyActivity extends Activity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.main);
     }
+    
+    /** Foobar */
+    
 }
