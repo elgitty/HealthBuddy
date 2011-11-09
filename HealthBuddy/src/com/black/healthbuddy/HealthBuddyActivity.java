@@ -11,6 +11,6 @@ public class HealthBuddyActivity extends Activity {
         setContentView(R.layout.main);
     }
     
-  // test again 
+  // test 3 
     
 }
