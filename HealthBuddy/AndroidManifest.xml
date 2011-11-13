@@ -17,27 +17,33 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>           
-        <activity android:name="HealthBuddyActivity"></activity>        
-        <activity android:name="UserProfileActivity"></activity>        
+        <activity android:name="HealthBuddyActivity"></activity>   
+             
+        <activity android:name="UserProfileActivity"></activity> 
+        <activity android:name="EditUserProfileActivity"></activity> 
+              
         <activity android:name="ExerciseMenuActivity"></activity>     
         <activity android:name="SearchExerciseDBActivity"></activity>
         <activity android:name="AddExerciseActivity"></activity>
         <activity android:name="RecordRoutesActivity"></activity>
-        <activity android:name="LocatorActivity"></activity>   
-             
+        <activity android:name="LocatorActivity"></activity>  
+                      
         <activity android:name="NutritionMenuActivity"></activity>         
         <activity android:name="SearchNutritionDBActivity"></activity>        
         <activity android:name="AddNutritionActivity"></activity>            
         <activity android:name="ScanActivity"></activity>             
         <activity android:name="RecipeActivity"></activity>
-        <activity android:name="ShoppingActivity"></activity>        
-            
+        <activity android:name="ShoppingActivity"></activity> 
+                           
         <activity android:name="ChartMenuActivity"></activity>
-
+        <activity android:name="ExerciseChartActivity"></activity>
+        <activity android:name="NutritionChartActivity"></activity>
+        <activity android:name="HealthChartActivity"></activity>  
+                                  
         <activity android:name="CalendarDayViewActivity"></activity>
         <activity android:name="CalendarWeekViewActivity"></activity>
-        <activity android:name="CalendarMonthViewActivity"></activity>
-                
+        <activity android:name="CalendarMonthViewActivity"></activity>  
+                      
         <activity android:name="SettingsActivity"></activity>        
     </application>
 

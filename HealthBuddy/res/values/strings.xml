@@ -10,7 +10,7 @@
     <string name="user_profile">Profile</string>
     <string name="exercise_menu">Exercise</string>
     <string name="nutrition_menu">Food and Drinks</string>
-    <string name="charts">Charts</string>
+    <string name="chart_menu">Charts</string>
     <string name="calendar">Calendar</string>
     <string name="settings">Settings</string>
     
@@ -36,7 +36,13 @@
     <string name="scan_result">This interface has a search box for name\/address, and displays a map</string>        
     <string name="recipe_finder_result">This interface has a list of recipes</string>        
     <string name="shopping_list_result">This interface has a list of items to buy</string>        
-     
+
+    <string name="exercise_chart">Your Exercise Stats</string>
+    <string name="nutrition_chart">Your Nutrition Stats</string>     
+    <string name="health_chart">Your Health Stats</string>  
+    <string name="exercise_chart_result">A chart of fitness stats will go here</string>
+    <string name="nutrition_chart_result">A chart of nutrition stats will go here</string>     
+    <string name="health_chart_result">A chart of combined nutrition and fitness stats will go here</string>        
         
     <string name="calendar_day_view">Today</string>
     <string name="calendar_week_view">Week</string>
