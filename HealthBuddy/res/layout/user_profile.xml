@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	<TextView 
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="name">	    
+	</TextView>
+	  
+	<TextView 
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="age">	    
+	</TextView>
+    
+	<TextView 
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="height">	    
+	</TextView>
+
+	<TextView 
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="weight">	    
+	</TextView>
+    
+	<TextView 
+	    android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="gender">			    
+	</TextView>
+	
+	<Button 
+	    android:id="@+id/edit_profile_button"
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:text="Edit Profile">	   
+	</Button>   
+
+    <Button 
+        android:id="@+id/charts_button" 
+        android:text="@string/chart_menu"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+    />
+
+    <Button 
+        android:id="@+id/menu_button" 
+        android:text="@string/menu"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+    	/>
+
+</LinearLayout>

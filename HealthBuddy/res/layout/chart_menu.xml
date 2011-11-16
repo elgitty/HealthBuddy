@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+    <TextView
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:text="@string/chart_menu" 
+    />
+
+    <Button
+        android:id="@+id/health_chart_button"
+        android:text="@string/health_chart"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" 
+    />
+
+    <Button 
+        android:id="@+id/exercise_chart_button" 
+        android:text="@string/exercise_chart"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+    />    
+    
+    <Button 
+        android:id="@+id/nutrition_chart_button" 
+        android:text="@string/nutrition_chart"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+    />    
+    
+    <Button 
+        android:id="@+id/menu_button" 
+        android:text="@string/menu"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+    	/>
+    
+</LinearLayout>

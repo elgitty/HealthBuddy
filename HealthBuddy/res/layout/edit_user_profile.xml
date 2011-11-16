@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical" >
+
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Enter your name:">	    
+	</TextView>
+	
+    <EditText android:id="@+id/nameInput"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:singleLine="true"
+        />
+    
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Enter your age:">	    
+	</TextView>
+		
+    <EditText android:id="@+id/ageInput"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+    
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Enter your height (in cm):">	    
+	</TextView>
+	
+    <EditText android:id="@+id/heightInput"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+    
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Enter your weight (in Kg):">	    
+	</TextView>
+
+    <EditText android:id="@+id/weightInput"
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"
+        android:inputType="number"
+        />
+    
+	<TextView android:layout_width="fill_parent"
+		android:layout_height="wrap_content"
+		android:text="Select your gender:">			    
+	</TextView>
+	
+     <RadioGroup
+      android:layout_width="fill_parent"
+      android:layout_height="wrap_content"
+      android:orientation="vertical">
+      
+      <RadioButton android:id="@+id/radio_male"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Male" 
+          />
+      
+      <RadioButton android:id="@+id/radio_female"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="Female" 
+          />
+    </RadioGroup>
+	
+	<Button android:id="@+id/save_profile_button"
+  		android:layout_width="fill_parent"
+  		android:layout_height="wrap_content"
+  		android:text="Save Profile">	   
+	</Button>   
+
+    <Button 
+        android:id="@+id/menu_button" 
+        android:text="@string/menu"
+        android:layout_width="wrap_content" 
+        android:layout_height="wrap_content" 
+    	/>
+
+</LinearLayout>
