@@ -1,56 +1,62 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#0066FF"
     android:orientation="vertical" >
 
-    <TextView
+    <LinearLayout
+        android:id="@+id/menu_layout"
         android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/nutrition_menu"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/searchDB_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exercise_db" />
+
+        <Button
+            android:id="@+id/scan_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/scan" />
+
+        <Button
+            android:id="@+id/recipe_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/recipe_finder" />
+
+        <Button
+            android:id="@+id/shopping_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/shopping_list" />
+
+        <Button
+            android:id="@+id/locator_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/restaurant_locator" />
+
+    </LinearLayout>
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/nutrition_menu" 
-    />
-    
-    <Button 
-        android:id="@+id/searchDB_button" 
-        android:text="@string/exercise_db"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />    
-
-    <Button 
-        android:id="@+id/scan_button" 
-        android:text="@string/scan"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />
-
-    <Button 
-        android:id="@+id/recipe_button" 
-        android:text="@string/recipe_finder"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />    
-
-    <Button 
-        android:id="@+id/shopping_button" 
-        android:text="@string/shopping_list"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />
-    
-    <Button 
-        android:id="@+id/locator_button" 
-        android:text="@string/restaurant_locator"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />
-    
-    <Button 
-        android:id="@+id/menu_button" 
-        android:text="@string/menu"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    	/>
-    
-
-</LinearLayout>
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:minWidth="125px"
+        android:text="@string/menu" />
+</RelativeLayout>

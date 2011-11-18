@@ -5,19 +5,11 @@ import com.black.healthbuddy.model.HealthBuddyDbAdapter;
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
-//import android.view.MotionEvent;
 import android.view.View;
 import android.view.View.OnClickListener;
-//import android.view.View.OnTouchListener;
 import android.widget.Button;
-//import android.widget.LinearLayout;
-//import android.widget.ViewFlipper;
-
-//import android.widget.TextView;
-//import android.widget.Toast;
 
 
-//public class MenuActivity extends Activity implements OnTouchListener, OnClickListener {
 public class MenuActivity extends Activity implements OnClickListener {
 	
 //    private static final String EMPTY_STRING = "";
@@ -35,7 +27,6 @@ public class MenuActivity extends Activity implements OnClickListener {
     //database object
     private HealthBuddyDbAdapter mDbHelper;
 
-//	ViewFlipper vf;
     /** Called when the activity is first created. */
     @Override
     public void onCreate(Bundle savedInstanceState) {
@@ -52,10 +43,6 @@ public class MenuActivity extends Activity implements OnClickListener {
         
 		mDbHelper.close();
 		
-//      LinearLayout layout = (LinearLayout) findViewById(R.id.welcomeLayout);
-//		layout.setOnTouchListener(this);
-//		vf = (ViewFlipper) findViewById(R.id.menuFlipper);
-
         // wire the UI to the code
 		userButton = (Button) findViewById(R.id.user_button);
 		userButton.setOnClickListener(this);		
@@ -76,15 +63,6 @@ public class MenuActivity extends Activity implements OnClickListener {
 	    settingsButton.setOnClickListener(this);
     }
     
-    
-    // implement interface methods
-    
-/*	@Override
-	public boolean onTouch(View v, MotionEvent event) {
-		vf.setDisplayedChild(1);
-		return true;
-	}
-*/
 	@Override
 	public void onClick(View v) {
 		if (userButton.getId() == ((Button) v).getId()){

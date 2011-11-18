@@ -1,41 +1,53 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#0066FF"
     android:orientation="vertical" >
-    	  
-    <TextView
+
+    <LinearLayout
+        android:id="@+id/menu_layout"
         android:layout_width="fill_parent"
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px"
+        android:orientation="vertical" >
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/exercise_menu"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/searchDB_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exercise_db" />
+
+        <Button
+            android:id="@+id/routes_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/record_routes" />
+
+        <Button
+            android:id="@+id/locator_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/gym_locator" />
+
+
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:text="@string/exercise_menu" 
-    />
-    
-    <Button 
-        android:id="@+id/searchDB_button" 
-        android:text="@string/exercise_db"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />    
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:minWidth="125px"
+        android:text="@string/menu" />
 
-    <Button 
-        android:id="@+id/routes_button" 
-        android:text="@string/record_routes"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />
-    
-    <Button 
-        android:id="@+id/locator_button" 
-        android:text="@string/gym_locator"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />
-    
-    <Button 
-        android:id="@+id/menu_button" 
-        android:text="@string/menu"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    	/>
-
-</LinearLayout>
+</RelativeLayout>

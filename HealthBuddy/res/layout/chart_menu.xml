@@ -1,40 +1,51 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#0066FF"
     android:orientation="vertical" >
-    <TextView
+
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:text="@string/chart_menu" 
-    />
+        android:layout_height="fill_parent"
+        android:layout_marginLeft="15px"
+        android:layout_marginRight="15px"
+        android:background="#0066FF"
+        android:orientation="vertical" >
 
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="@string/chart_menu"
+            android:textSize="25sp" />
+
+        <Button
+            android:id="@+id/health_chart_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/health_chart" />
+
+        <Button
+            android:id="@+id/exercise_chart_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/exercise_chart" />
+
+        <Button
+            android:id="@+id/nutrition_chart_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="@string/nutrition_chart" />
+
+
+    </LinearLayout>
     <Button
-        android:id="@+id/health_chart_button"
-        android:text="@string/health_chart"
+        android:id="@+id/menu_button"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" 
-    />
-
-    <Button 
-        android:id="@+id/exercise_chart_button" 
-        android:text="@string/exercise_chart"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />    
-    
-    <Button 
-        android:id="@+id/nutrition_chart_button" 
-        android:text="@string/nutrition_chart"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    />    
-    
-    <Button 
-        android:id="@+id/menu_button" 
-        android:text="@string/menu"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    	/>
-    
-</LinearLayout>
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:minWidth="125px"
+        android:text="@string/menu" />
+</RelativeLayout>

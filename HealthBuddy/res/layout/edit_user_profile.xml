@@ -1,87 +1,111 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    android:background="#0066FF"
     android:orientation="vertical" >
 
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="Enter your name:">	    
-	</TextView>
-	
-    <EditText android:id="@+id/nameInput"
+    <LinearLayout
         android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:singleLine="true"
-        />
-    
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="Enter your age:">	    
-	</TextView>
-		
-    <EditText android:id="@+id/ageInput"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        />
-    
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="Enter your height (in cm):">	    
-	</TextView>
-	
-    <EditText android:id="@+id/heightInput"
-        android:layout_width="fill_parent"
-        android:layout_height="wrap_content"
-        android:inputType="number"
-        />
-    
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="Enter your weight (in Kg):">	    
-	</TextView>
+        android:layout_height="fill_parent"
+        android:background="#0066FF"
+        android:orientation="vertical" android:layout_marginRight="15px" android:layout_marginLeft="15px">
 
-    <EditText android:id="@+id/weightInput"
-        android:layout_width="fill_parent"
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:text="Edit Profile"
+            android:textSize="25sp" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your name:" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/nameInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:singleLine="true" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your age:" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/ageInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your height (in cm):" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/heightInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Enter your weight (in Kg):" >
+        </TextView>
+
+        <EditText
+            android:id="@+id/weightInput"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:inputType="number" />
+
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Select your gender:" >
+        </TextView>
+
+        <RadioGroup
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal" android:layout_gravity="center">
+
+            <RadioButton
+                android:id="@+id/radio_male"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Male" android:layout_marginRight="50px"/>
+
+            <RadioButton
+                android:id="@+id/radio_female"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="Female" />
+
+        </RadioGroup>
+
+        <Button
+            android:id="@+id/save_profile_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:text="Save Profile" >
+        </Button>
+    </LinearLayout>
+
+    <Button
+        android:id="@+id/menu_button"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:inputType="number"
-        />
-    
-	<TextView android:layout_width="fill_parent"
-		android:layout_height="wrap_content"
-		android:text="Select your gender:">			    
-	</TextView>
-	
-     <RadioGroup
-      android:layout_width="fill_parent"
-      android:layout_height="wrap_content"
-      android:orientation="vertical">
-      
-      <RadioButton android:id="@+id/radio_male"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Male" 
-          />
-      
-      <RadioButton android:id="@+id/radio_female"
-          android:layout_width="wrap_content"
-          android:layout_height="wrap_content"
-          android:text="Female" 
-          />
-    </RadioGroup>
-	
-	<Button android:id="@+id/save_profile_button"
-  		android:layout_width="fill_parent"
-  		android:layout_height="wrap_content"
-  		android:text="Save Profile">	   
-	</Button>   
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentRight="true"
+        android:minWidth="125px"
+        android:text="@string/menu" />
 
-    <Button 
-        android:id="@+id/menu_button" 
-        android:text="@string/menu"
-        android:layout_width="wrap_content" 
-        android:layout_height="wrap_content" 
-    	/>
-
-</LinearLayout>
+</RelativeLayout>

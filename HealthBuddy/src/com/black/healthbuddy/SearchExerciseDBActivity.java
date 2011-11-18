@@ -1,5 +1,7 @@
 package com.black.healthbuddy;
 
+import com.black.healthbuddy.model.HealthBuddyDbAdapter;
+
 import android.app.Activity;
 import android.os.Bundle;
 import android.content.Intent;
@@ -16,10 +18,24 @@ public class SearchExerciseDBActivity extends Activity implements OnClickListene
     private Button menuButton;
     private Button addExerciseButton;
 
+	//database object
+    private HealthBuddyDbAdapter mDbHelper;
+    
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.exercise_db_result);
+
+
+        //////////Database stuff
+        mDbHelper = new HealthBuddyDbAdapter(this);
+        mDbHelper.open();
+//        mDbHelper.dropAndRecreateTables();
+//        mDbHelper.insertDataIntoTables();
+        
+        //call methods on database access object
+        mDbHelper.sampletestQuerys();
+      
         
         // wire the UI to the code	
         addExerciseButton = (Button) findViewById(R.id.add_exercise_button);
@@ -27,7 +43,9 @@ public class SearchExerciseDBActivity extends Activity implements OnClickListene
 	    
 	    menuButton = (Button) findViewById(R.id.menu_button);
 	    menuButton.setOnClickListener(this);
-		
+
+		//////////Database stuff
+		mDbHelper.close();
     }
 
     // launch activities by button click, with intents
