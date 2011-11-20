@@ -15,9 +15,9 @@ import com.black.healthbuddy.model.HealthBuddyDbAdapter;
 
 public class UserProfileActivity extends Activity implements OnClickListener {
 
-	// private static final String EMPTY_STRING = "";
-
-	// private TextView calorieBankTextView;
+    // @em: to save data to string and display in profile
+    private TextView savedName, savedAge, savedHeight, savedWeight, savedSex;
+	// private TextView calorieBank;
 	private Button menuButton;
 	private Button chartsButton;
 	private Button editButton;
@@ -28,6 +28,14 @@ public class UserProfileActivity extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
+		
+        // @em: these will store the user input for display in this activity
+        savedName = (TextView) findViewById(R.id.saved_name);
+        savedAge = (TextView) findViewById(R.id.saved_age);
+        savedHeight = (TextView) findViewById(R.id.saved_height);
+        savedWeight = (TextView) findViewById(R.id.saved_weight);
+        savedSex = (TextView) findViewById(R.id.saved_sex);
+
 
 		// get the data needed back from the database
 
@@ -131,42 +139,43 @@ public class UserProfileActivity extends Activity implements OnClickListener {
 		View itemView = inflater.inflate(R.layout.user_profile, null);
 
 		/////////5 		assigning values from the queryed array of strings to the Layout variables
+		
 		// ///////////////changing the default values from xml
 		// finding the view with the id user_name and casting it into a TextView
 		// object
-		TextView user_name = (TextView) itemView.findViewById(R.id.user_name);
+		TextView user_name = (TextView) itemView.findViewById(R.id.saved_name);
 		// reassigning the xml value with R.id.user_name
 		user_name.setText(userDetail[1]);
 
 		// finding the view with the id user_age and casting it into a TextView
 		// object
-		TextView user_age = (TextView) itemView.findViewById(R.id.user_age);
+		TextView user_age = (TextView) itemView.findViewById(R.id.saved_age);
 		// reassigning the xml value with R.id.user_age
 		user_age.setText(userDetail[2]);
 
 		// finding the view with the id user_height and casting it into a TextView
 		// object
 		TextView user_height = (TextView) itemView
-				.findViewById(R.id.user_height);
+				.findViewById(R.id.saved_height);
 		// reassigning the xml value with R.id.user_height
 		user_height.setText(userDetail[3]);
 
 		// finding the view with the id user_weight and casting it into a TextView
 		// object
 		TextView user_weight = (TextView) itemView
-				.findViewById(R.id.user_weight);
+				.findViewById(R.id.saved_weight);
 		// reassigning the xml value with R.id.user_weight
 		user_weight.setText(userDetail[4]);
 
 		// finding the view with the id user_gender and casting it into a TextView
 		TextView user_gender = (TextView) itemView
-				.findViewById(R.id.user_gender);
+				.findViewById(R.id.saved_sex);
 		// reassigning the xml value with R.id.user_gender
 		user_gender.setText(userDetail[5]);
 
 		// finding the view with the id user_calaries and casting it into a TextView
 		TextView user_calories = (TextView) itemView
-				.findViewById(R.id.user_calarie_bank);
+				.findViewById(R.id.calorie_bank_id);
 		// reassigning the xml value with R.id.user_calarie_bank
 		user_calories.setText(userDetail[6]);
 

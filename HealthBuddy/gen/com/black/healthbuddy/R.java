@@ -27,6 +27,7 @@ public final class R {
         public static final int button11=0x7f050036;
         public static final int button2=0x7f050033;
         public static final int button3=0x7f050034;
+        public static final int calorie_bank_id=0x7f05003e;
         public static final int calorie_bank_text_view=0x7f05002b;
         public static final int charts_button=0x7f05002a;
         public static final int day_view_button=0x7f050000;
@@ -60,6 +61,11 @@ public final class R {
         public static final int relativeLayout1=0x7f050032;
         public static final int routes_button=0x7f050022;
         public static final int save_profile_button=0x7f05000e;
+        public static final int saved_age=0x7f050038;
+        public static final int saved_height=0x7f050039;
+        public static final int saved_name=0x7f050037;
+        public static final int saved_sex=0x7f05003c;
+        public static final int saved_weight=0x7f05003a;
         public static final int scan_button=0x7f05002f;
         public static final int searchDB_button=0x7f050021;
         public static final int settings_button=0x7f050027;
@@ -72,13 +78,7 @@ public final class R {
         public static final int tableRow3=0x7f05001a;
         public static final int tableRow4=0x7f05001d;
         public static final int tableRow5=0x7f05003b;
-        public static final int user_age=0x7f050038;
         public static final int user_button=0x7f050026;
-        public static final int user_calarie_bank=0x7f05003e;
-        public static final int user_gender=0x7f05003c;
-        public static final int user_height=0x7f050039;
-        public static final int user_name=0x7f050037;
-        public static final int user_weight=0x7f05003a;
         public static final int week_view_button=0x7f050001;
         public static final int weightInput=0x7f05000b;
     }
@@ -115,8 +115,8 @@ public final class R {
         public static final int app_name=0x7f040002;
         public static final int calendar=0x7f040008;
         public static final int calendar_day_view=0x7f040022;
-        public static final int calendar_month_view=0x7f040024;
-        public static final int calendar_week_view=0x7f040023;
+        public static final int calendar_month_view=0x7f040025;
+        public static final int calendar_week_view=0x7f040024;
         public static final int calorie_bank=0x7f04000b;
         public static final int chart_menu=0x7f040007;
         public static final int exercise_chart=0x7f04001c;
@@ -131,6 +131,7 @@ public final class R {
         public static final int locator_result=0x7f040014;
         public static final int menu=0x7f040003;
         public static final int message=0x7f04000a;
+        public static final int no_entry=0x7f040023;
         public static final int nutrition_chart=0x7f04001d;
         public static final int nutrition_chart_result=0x7f040020;
         public static final int nutrition_menu=0x7f040006;
