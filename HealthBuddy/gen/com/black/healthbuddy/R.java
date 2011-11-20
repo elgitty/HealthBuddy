@@ -30,7 +30,7 @@ public final class R {
         public static final int calorie_bank_text_view=0x7f05002b;
         public static final int charts_button=0x7f05002a;
         public static final int day_view_button=0x7f050000;
-        public static final int edit_profile_button=0x7f050038;
+        public static final int edit_profile_button=0x7f05003d;
         public static final int exercise_button=0x7f050029;
         public static final int exercise_chart_button=0x7f050006;
         public static final int health_chart_button=0x7f050005;
@@ -71,8 +71,14 @@ public final class R {
         public static final int tableRow2=0x7f050017;
         public static final int tableRow3=0x7f05001a;
         public static final int tableRow4=0x7f05001d;
-        public static final int tableRow5=0x7f050037;
+        public static final int tableRow5=0x7f05003b;
+        public static final int user_age=0x7f050038;
         public static final int user_button=0x7f050026;
+        public static final int user_calarie_bank=0x7f05003e;
+        public static final int user_gender=0x7f05003c;
+        public static final int user_height=0x7f050039;
+        public static final int user_name=0x7f050037;
+        public static final int user_weight=0x7f05003a;
         public static final int week_view_button=0x7f050001;
         public static final int weightInput=0x7f05000b;
     }

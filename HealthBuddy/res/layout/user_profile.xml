@@ -43,10 +43,11 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/user_name"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25px"
-                    android:text="name"
+                    android:text="user_name"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -64,10 +65,11 @@
                     android:textSize="20sp" />
 
                 <TextView
+                   android:id="@+id/user_age"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25px"
-                    android:text="age"
+                    android:text="user_age"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -85,10 +87,11 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/user_height"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25px"
-                    android:text="height"
+                    android:text="user_height"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -106,10 +109,11 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/user_weight"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25px"
-                    android:text="weight"
+                    android:text="user_weight"
                     android:textSize="20sp" />
             </TableRow>
 
@@ -127,10 +131,11 @@
                     android:textSize="20sp" />
 
                 <TextView
+                    android:id="@+id/user_gender"
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
                     android:layout_marginLeft="25px"
-                    android:text="gender"
+                    android:text="user_gender"
                     android:textSize="20sp" />
             </TableRow>
         </TableLayout>
@@ -156,10 +161,11 @@
             android:text="@string/calorie_bank" />
 
         <TextView
+            android:id="@+id/user_calarie_bank"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="+1350" />
+            android:text="user_calarie_bank" />
     </LinearLayout>
 
     <Button
