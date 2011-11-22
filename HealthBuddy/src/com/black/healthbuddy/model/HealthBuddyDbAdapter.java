@@ -33,19 +33,18 @@ public class HealthBuddyDbAdapter {
 	// for food that is not in the the database the user can enter his data into
 	// the Nutrition table and it can be referenced from the table below
 	// this table relates to the NutritionData object
-	private static final String USERPROFILE_NUT_LOG_CREATE = "create table UserNutritionLogTable(_id integer primary key autoincrement, NutritionId_FK integer not null, startTime integer not null, finishTime text not null, " +
-	"logFrequency text, logPortion integer, user_id_FK integer not null)";
+	private static final String USERPROFILE_NUT_LOG_CREATE = "create table UserNutritionLogTable(_id integer primary key autoincrement, NutritionId_FK integer not null, startTime integer not null, finishTime text not null, "
+			+ "logFrequency text, logPortion integer, user_id_FK integer not null)";
 	// this table is used to record all activity for say last 24 hours
 	// relates to Exercise Data object
-	private static final String USERPROFILE_EX_LOG_CREATE = "create table UserExerciseLogTable(_id integer primary key autoincrement, exerciseId_FK integer not null, startTime integer not null, finishTime text not null, " +
-	"logDuration integer, logFrequency integer, user_id_FK integer not null)";
-	
+	private static final String USERPROFILE_EX_LOG_CREATE = "create table UserExerciseLogTable(_id integer primary key autoincrement, exerciseId_FK integer not null, startTime integer not null, finishTime text not null, "
+			+ "logDuration integer, logFrequency integer, user_id_FK integer not null)";
+
 	// TABLES GROUP 2
 	// this is the table that will store the mr perfect or mrs perfect details
 	// based on Franks calulations he was on about today!
 	private static final String USER_IDEAL_TABLE_CREATE = "create table user_ideal_table(_id integer primary key autoincrement, "
 			+ "age integer not null, sex text not null, recommendedCalaroieBank integer)";
-			
 
 	// TABLES GROUP 3
 	// stores all the data relating to typical exercises, I will only use on the
@@ -164,7 +163,8 @@ public class HealthBuddyDbAdapter {
 
 	// create a user profile nutritional record
 	public long createUserNutritionLog(int NutritionId_FK, long startTime,
-			long finishTime, String logFrequency, String logPortion, long user_id_FK) {
+			long finishTime, String logFrequency, String logPortion,
+			long user_id_FK) {
 		ContentValues initialValues = new ContentValues();
 		initialValues.put("NutritionId_FK", NutritionId_FK);
 		initialValues.put("startTime", startTime);
@@ -175,10 +175,10 @@ public class HealthBuddyDbAdapter {
 		return mDb.insert("UserNutritionLogTable", null, initialValues);//
 	}
 
-	
 	// create a user profile exercise record
 	public long createUserExerciseLog(int exerciseId_FK, long startTime,
-			long finishTime, int logDuration, String logFrequency, int user_id_FK) {
+			long finishTime, int logDuration, String logFrequency,
+			int user_id_FK) {
 		ContentValues initialValues = new ContentValues();
 		initialValues.put("exerciseId_FK", exerciseId_FK);
 		initialValues.put("startTime", startTime);
@@ -188,7 +188,6 @@ public class HealthBuddyDbAdapter {
 		initialValues.put("user_id_FK", user_id_FK);
 		return mDb.insert("UserExerciseLogTable", null, initialValues);//
 	}
-	
 
 	// Group 2
 	// create an ideal user record
@@ -268,7 +267,8 @@ public class HealthBuddyDbAdapter {
 
 	// update phone users nutritional log records
 	public boolean updateUserNutritionLog(long _id, int NutritionId_FK,
-			long startTime, long finishTime, String logFrequency, int logPortion , long user_id_FK) {
+			long startTime, long finishTime, String logFrequency,
+			int logPortion, long user_id_FK) {
 		ContentValues args = new ContentValues();
 		args.put("NutritionId_FK", NutritionId_FK);
 		args.put("startTime", startTime);
@@ -276,14 +276,15 @@ public class HealthBuddyDbAdapter {
 		args.put("logFrequency", logFrequency);
 		args.put("logPortion", logPortion);
 		args.put("user_id_FK", user_id_FK);
-		
-		return mDb.update("UserNutritionLogTable", args, "_id" + "=" + _id, null) > 0;//
-	}
 
+		return mDb.update("UserNutritionLogTable", args, "_id" + "=" + _id,
+				null) > 0;//
+	}
 
 	// update phone user exercise log records
 	public boolean updateUserExerciseLog(long _id, int exerciseId_FK,
-			long startTime, long finishTime, String logFrequency, int logPortion, long user_id_FK) {
+			long startTime, long finishTime, String logFrequency,
+			int logPortion, long user_id_FK) {
 		ContentValues args = new ContentValues();
 		args.put("exerciseId_FK", exerciseId_FK);
 		args.put("startTime", startTime);
@@ -291,9 +292,10 @@ public class HealthBuddyDbAdapter {
 		args.put("logFrequency", logFrequency);
 		args.put("logPortion", logPortion);
 		args.put("user_id_FK", user_id_FK);
-		return mDb.update("UserExerciseLogTable", args, "_id" + "=" + _id, null) > 0;
+		return mDb
+				.update("UserExerciseLogTable", args, "_id" + "=" + _id, null) > 0;
 	}
-	
+
 	// Group 2
 	// update ideal user record
 	public boolean updateIdealUser(long _id, int age, String sex,
@@ -413,67 +415,80 @@ public class HealthBuddyDbAdapter {
 	}
 
 	public void sampletestQuerys() {
-		//sample query Cursor c = mDbHelper.queryTable("NutritionTable ", null,"foodtype = 'Drinks'", null , null, null, null);
-		// see http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html  for
-		// a detailled look at how the query method works which the queryTable method uses.
-		
-		//if you wanted to find the All the Vegetables names and there recommended daily amount and then put them in a string you would do the following 
-		//queryTable will return a Cursor that will join the NutritionTable and the NutrionaRecommened and select items that are vegetables
-//		Cursor c = 
-//				this.queryTable(
-//						"NutritionTable JOIN NutritionRecommendationTable ON (NutritionTable.NutritionRecommendationTable_FK = NutritionRecommendationTable.foodGroupFromMyPlate)",
-//						null,
-//						"NutritionRecommendationTable.foodGroupFromMyPlate = 'Vegetables'",
-//						null, null, null, null);
-//		String result = "";
-//
-//		int iRow = c.getColumnIndexOrThrow("_id");
-//		int iFood_Name = c.getColumnIndexOrThrow("FoodOrNutrientName");
-//		int irecommeded = c.getColumnIndexOrThrow("recommendedDailyAmount");
-//		//
-//		//we then iterate through the curser taking out the results
-//		for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
-//			result = result + "Record No:" + c.getString(iRow) + " "
-//					+ c.getString(iFood_Name) + " Recommended Daily Amount: "
-////					+ c.getString(irecommeded) + "\t";
-//		}
-//
-//		c.close(); // closing curser
-//		int x = 0;
+		// sample query Cursor c = mDbHelper.queryTable("NutritionTable ",
+		// null,"foodtype = 'Drinks'", null , null, null, null);
+		// see
+		// http://developer.android.com/reference/android/database/sqlite/SQLiteDatabase.html
+		// for
+		// a detailled look at how the query method works which the queryTable
+		// method uses.
 
-		//x = 10 * 10;
+		// if you wanted to find the All the Vegetables names and there
+		// recommended daily amount and then put them in a string you would do
+		// the following
+		// queryTable will return a Cursor that will join the NutritionTable and
+		// the NutrionaRecommened and select items that are vegetables
+		// Cursor c =
+		// this.queryTable(
+		// "NutritionTable JOIN NutritionRecommendationTable ON (NutritionTable.NutritionRecommendationTable_FK = NutritionRecommendationTable.foodGroupFromMyPlate)",
+		// null,
+		// "NutritionRecommendationTable.foodGroupFromMyPlate = 'Vegetables'",
+		// null, null, null, null);
+		// String result = "";
+		//
+		// int iRow = c.getColumnIndexOrThrow("_id");
+		// int iFood_Name = c.getColumnIndexOrThrow("FoodOrNutrientName");
+		// int irecommeded = c.getColumnIndexOrThrow("recommendedDailyAmount");
+		// //
+		// //we then iterate through the curser taking out the results
+		// for (c.moveToFirst(); !c.isAfterLast(); c.moveToNext()) {
+		// result = result + "Record No:" + c.getString(iRow) + " "
+		// + c.getString(iFood_Name) + " Recommended Daily Amount: "
+		// // + c.getString(irecommeded) + "\t";
+		// }
+		//
+		// c.close(); // closing curser
+		// int x = 0;
 
-		////////different updates to show whats happening
-		
+		// x = 10 * 10;
 
-		//user with id 1
-		createUserProfile("Jack Sparrow", 40, "male", 1.65, 77,
-				2300, "userExerciseLog");
-		//user with id 2
+		// //////different updates to show whats happening
+
+		// user with id 1
+		createUserProfile("Jack Sparrow", 40, "male", 1.65, 77, 2300,
+				"userExerciseLog");
+		// user with id 2
 		createUserProfile("Jill Dunne", 24, "female", 1.65, 60, 2100,
 				"user Exercise log");
-		//user with id 3
+		// user with id 3
 		createUserProfile("Ted Crilly", 25, "male", 1.65, 60, 2200,
 				"user Exercise log");
-		
-		
-		//user with id 1
+
+		// user with id 1
 		createUserExerciseLog(3, 34535345, 323423423, 60, "10", 1);
 		createUserExerciseLog(2, 3534534, 563563465, 45, "35", 1);
 		createUserExerciseLog(1, 3534534, 563563465, 45, "35", 1);
-		
-		//user with id 1
+
+		// user with id 1
 		createUserExerciseLog(2, 3534534, 563563465, 45, "35", 2);
 		createUserExerciseLog(4, 3534534, 563563465, 45, "35", 2);
 		createUserExerciseLog(5, 3534534, 563563465, 45, "35", 2);
 		createUserExerciseLog(1, 3534534, 563563465, 45, "35", 2);
-		
-		//user with id 1
+
+		// user with id 1
 		createUserExerciseLog(2, 3534534, 563563465, 45, "35", 3);
 		createUserExerciseLog(4, 3534534, 563563465, 45, "35", 3);
 		createUserExerciseLog(5, 3534534, 563563465, 45, "35", 3);
 		createUserExerciseLog(1, 3534534, 563563465, 45, "35", 3);
-		
+
+		// create userNutr
+		// createUserNutritionLog(NutritionId_FK, startTime, finishTime,
+		// logFrequency, logPortion, user_id_FK)
+		// NBNBNBNBN start here making mock data examples
+
+		createUserNutritionLog(1, 456345, 45646456, "10", "10", 1);
+		createUserNutritionLog(2, 635345, 54673634, "12", "11", 1);
+		createUserNutritionLog(3, 345345, 4565345, "-13", "14", 1);
 
 	}
 
@@ -490,6 +505,17 @@ public class HealthBuddyDbAdapter {
 		createNutritionalRecommendation("Fruit", 106, "g");
 		createNutritionalRecommendation("Dairy", 400, "ml");
 		createNutritionalRecommendation("Protein", 141, "g");
+
+		// public boolean updateNutrient(long _id,
+		// String NutritionRecommendationTable_FK, int ScanID,
+		// String foodType, String FoodOrNutrientName, int foodMinPortion,
+		// int caloriesPerMinPortion, int numberOfContainers,
+		// String containerType, double measurement, String measurementUnit)
+
+		createNutrient("Grain", 111111, "Grain", "Cornflakes", 1, 113, 1,
+				"Bowel", 30, "g");
+		createNutrient("Dairy", 11111, "Dairy", "Milk", 1, 159, 1, "cup", 250,
+				"ml");
 
 		createNutrient("Dairy", 111111, "Chocolate", "Dairy Milk Cadburys", 1,
 				255, 1, "Bar", 49, "g");
