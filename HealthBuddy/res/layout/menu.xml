@@ -99,13 +99,42 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="@string/calorie_bank" />
+            android:text="@string/calorie_bank_offSet" />
 
         <TextView
+            android:id="@+id/offset"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
-            android:text="+1350" />
+            android:text="" />
+
+        <TextView
+            android:id="@+id/calorie_bank_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/calorie_bank_consummed" />
+
+        <TextView
+            android:id="@+id/consumed"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="" />
+
+        <TextView
+            android:id="@+id/calorie_bank_text_view"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="@string/calorie_bank_burnt" />
+
+        <TextView
+            android:id="@+id/burnt"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center_horizontal"
+            android:text="" />
     </LinearLayout>
 
     <RelativeLayout
@@ -129,11 +158,19 @@
                 android:textSize="18sp" />
 
             <TextView
-                android:id="@+id/message_text_view"
+                android:id="@+id/message_text_view_High_Advice"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content"
                 android:layout_margin="15px"
-                android:text="@string/message"
+                android:text=""
+                android:textSize="18sp" />
+
+            <TextView
+                android:id="@+id/message_text_view_Low_Advice"
+                android:layout_width="fill_parent"
+                android:layout_height="wrap_content"
+                android:layout_margin="15px"
+                android:text=""
                 android:textSize="18sp" />
         </LinearLayout>
         <!-- <Button -->

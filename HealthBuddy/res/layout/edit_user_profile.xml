@@ -28,7 +28,8 @@
             android:id="@+id/nameInput"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:singleLine="true" />
+            android:singleLine="true" 
+            android:hint="Enter Name" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -40,7 +41,8 @@
             android:id="@+id/ageInput"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number" 
+            android:hint="Enter Age" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -52,7 +54,8 @@
             android:id="@+id/heightInput"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number" 
+            android:hint="Enter Height" />
 
         <TextView
             android:layout_width="fill_parent"
@@ -64,7 +67,8 @@
             android:id="@+id/weightInput"
             android:layout_width="fill_parent"
             android:layout_height="wrap_content"
-            android:inputType="number" />
+            android:inputType="number" 
+            android:hint="Enter Weight"/>
 
         <TextView
             android:layout_width="fill_parent"

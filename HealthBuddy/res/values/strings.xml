@@ -15,8 +15,12 @@
     <string name="settings">Settings</string>
     
     <string name="message">Message Area: The system has recorded more activity...</string>
-	<string name="calorie_bank">Today\'s calories bank is: </string> 
-	<string name="advice">Today\'s advice is...</string>
+	<string name="calorie_bank_offSet">Todays Calorie Offset</string> 
+	<string name="balanced_diet_calorie_heading">Balanced Daily Calorie Total</string> 
+	<string name="calorie_bank_consummed">Predicted Calories Consumed for Today</string> 
+	<string name="calorie_bank_burnt">Predicted Calories Burnt for Today</string> 
+	
+	<string name="advice"> Nutritional Advice</string>
 
     <string name="exercise_db">Search the Database</string>
     <string name="record_routes">Record your Routes</string>
@@ -47,5 +51,64 @@
     <string name="calendar_day_view">Today</string>
 	<string name="no_entry">No Entry</string>
     <string name="calendar_week_view">Week</string>
-    <string name="calendar_month_view">Month</string>        
+    <string name="calendar_month_view">Month</string>   
+    
+    <string name="no_notes">No Notes Yet</string>
+    <string name="select_one">Select One</string>     
+    <string name="refine_button">Refine</string>     
+        
+        
+    <string-array name="duration_array">
+        <item>5</item>
+        <item>10</item>
+        <item>15</item>
+        <item>20</item>
+        <item>25</item>
+        <item>30</item>
+        <item>35</item>
+        <item>40</item>
+        <item>45</item>
+        <item>50</item>
+        <item>55</item>
+        <item>60</item>
+    </string-array>    
+    
+	<string-array name="day_array">
+        <item>Today Only</item>
+        <item>Everyday</item>
+        <item>Weekdays</item>
+        <item>Weekends</item>
+     	<item>Mondays</item>
+        <item>Tuesdays</item>
+        <item>Wednesdays</item>
+        <item>Thursdays</item>
+        <item>Fridays</item>
+        <item>Saturdays</item>
+        <item>Sundays</item>
+    </string-array>
+        <string-array name="meal_array">
+        <item>All foods</item>
+        <item>Main Meals</item>
+        <item>Fruit and Veg</item>
+        <item>Snacks</item>
+        <item>Takeaway</item>
+        <item>Fish</item>
+        <item>Grain</item>
+        <item>Dinner</item>
+        <item>Chocolate</item>
+        <item>Drinks</item>
+        <item>Coffee</item>
+        <item>Sushi</item>
+        <item>Subway</item>
+        <item>Eggs</item>
+        <item>Mixed</item>
+    </string-array>
+    <string-array name="portion_array">
+        <item>1</item>
+        <item>2</item>
+        <item>3</item>
+        <item>4</item>
+        <item>5</item>
+    </string-array>
+
 </resources>

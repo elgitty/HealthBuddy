@@ -38,7 +38,7 @@ public class HealthBuddyDbAdapter {
 	// this table is used to record all activity for say last 24 hours
 	// relates to Exercise Data object
 	private static final String USERPROFILE_EX_LOG_CREATE = "create table UserExerciseLogTable(_id integer primary key autoincrement, exerciseId_FK integer not null, startTime integer not null, finishTime text not null, "
-			+ "logDuration integer, logFrequency integer, user_id_FK integer not null)";
+			+ "logDuration integer, logFrequency text, user_id_FK integer not null)";
 
 	// TABLES GROUP 2
 	// this is the table that will store the mr perfect or mrs perfect details
@@ -163,7 +163,7 @@ public class HealthBuddyDbAdapter {
 
 	// create a user profile nutritional record
 	public long createUserNutritionLog(int NutritionId_FK, long startTime,
-			long finishTime, String logFrequency, String logPortion,
+			long finishTime, String logFrequency, int logPortion,
 			long user_id_FK) {
 		ContentValues initialValues = new ContentValues();
 		initialValues.put("NutritionId_FK", NutritionId_FK);
@@ -284,13 +284,13 @@ public class HealthBuddyDbAdapter {
 	// update phone user exercise log records
 	public boolean updateUserExerciseLog(long _id, int exerciseId_FK,
 			long startTime, long finishTime, String logFrequency,
-			int logPortion, long user_id_FK) {
+			int logDuration, long user_id_FK) {
 		ContentValues args = new ContentValues();
 		args.put("exerciseId_FK", exerciseId_FK);
 		args.put("startTime", startTime);
 		args.put("finishTime", finishTime);
 		args.put("logFrequency", logFrequency);
-		args.put("logPortion", logPortion);
+		args.put("logDuration", logDuration);
 		args.put("user_id_FK", user_id_FK);
 		return mDb
 				.update("UserExerciseLogTable", args, "_id" + "=" + _id, null) > 0;
@@ -436,7 +436,7 @@ public class HealthBuddyDbAdapter {
 		// null, null, null, null);
 		// String result = "";
 		//
-		// int iRow = c.getColumnIndexOrThrow("_id");
+		// int i_id = c.getColumnIndexOrThrow("_id");
 		// int iFood_Name = c.getColumnIndexOrThrow("FoodOrNutrientName");
 		// int irecommeded = c.getColumnIndexOrThrow("recommendedDailyAmount");
 		// //
@@ -454,51 +454,47 @@ public class HealthBuddyDbAdapter {
 
 		// //////different updates to show whats happening
 
-		// user with id 1
-		createUserProfile("Jack Sparrow", 40, "male", 1.65, 77, 2300,
-				"userExerciseLog");
-		// user with id 2
-		createUserProfile("Jill Dunne", 24, "female", 1.65, 60, 2100,
-				"user Exercise log");
-		// user with id 3
-		createUserProfile("Ted Crilly", 25, "male", 1.65, 60, 2200,
-				"user Exercise log");
+		// // user with id 1
+		// createUserProfile("Jack Sparrow", 40, "male", 1.65, 77, 2300,
+		// "userExerciseLog");
+		// // user with id 2
+		// createUserProfile("Jill Dunne", 24, "female", 1.65, 60, 2100,
+		// "user Exercise log");
+		// // user with id 3
+		// createUserProfile("Ted Crilly", 25, "male", 1.65, 60, 2200,
+		// "user Exercise log");
 
 		// user with id 1
-		createUserExerciseLog(3, 34535345, 323423423, 60, "10", 1);
-		createUserExerciseLog(2, 3534534, 563563465, 45, "35", 1);
-		createUserExerciseLog(1, 3534534, 563563465, 45, "35", 1);
+		// createUserExerciseLog(3, 34535345, 323423423, 60, "10", 1);
+		// createUserExerciseLog(2, 3534534, 563563465, 45, "35", 1);
+		// createUserExerciseLog(1, 3534534, 563563465, 45, "35", 1);
 
 		// user with id 1
-		createUserExerciseLog(2, 3534534, 563563465, 45, "35", 2);
-		createUserExerciseLog(4, 3534534, 563563465, 45, "35", 2);
-		createUserExerciseLog(5, 3534534, 563563465, 45, "35", 2);
-		createUserExerciseLog(1, 3534534, 563563465, 45, "35", 2);
-
-		// user with id 1
-		createUserExerciseLog(2, 3534534, 563563465, 45, "35", 3);
-		createUserExerciseLog(4, 3534534, 563563465, 45, "35", 3);
-		createUserExerciseLog(5, 3534534, 563563465, 45, "35", 3);
-		createUserExerciseLog(1, 3534534, 563563465, 45, "35", 3);
-
-		// create userNutr
-		// createUserNutritionLog(NutritionId_FK, startTime, finishTime,
-		// logFrequency, logPortion, user_id_FK)
-		// NBNBNBNBN start here making mock data examples
-
-		createUserNutritionLog(1, 456345, 45646456, "10", "10", 1);
-		createUserNutritionLog(2, 635345, 54673634, "12", "11", 1);
-		createUserNutritionLog(3, 345345, 4565345, "-13", "14", 1);
+		// createUserExerciseLog(2, 3534534, 563563465, 45, "35", 2);
+		// createUserExerciseLog(4, 3534534, 563563465, 45, "35", 2);
+		// createUserExerciseLog(5, 3534534, 563563465, 45, "35", 2);
+		// createUserExerciseLog(1, 3534534, 563563465, 45, "35", 2);
+		//
+		// //user with id 1
+		// createUserExerciseLog(2, 3534534, 563563465, 45, "35", 3);
+		// createUserExerciseLog(4, 3534534, 563563465, 45, "35", 3);
+		// createUserExerciseLog(5, 3534534, 563563465, 45, "35", 3);
+		// createUserExerciseLog(1, 3534534, 563563465, 45, "35", 3);
+		//
 
 	}
 
 	public void insertDataIntoTables() {
 
-		createExercise("Walking 4mph", 45, 15, 6);
-		createExercise("Walking 2mph", 60, 30, 3);
-		createExercise("Running 8mph", 30, 15, 16.43);
-		createExercise("Sleeping", 30, 15, 1);
-		createExercise("Sitting/Resting", 30, 15, 1.25);
+		// user with id 1
+		createUserProfile("Jack Sparrow", 36, "male", 1.777, 76.2, 1835,
+				"userExerciseLog");
+
+		createExercise("Walking 4mph", 45, 15, 6); // 1
+		createExercise("Walking 2mph", 60, 30, 2); // 2
+		createExercise("Running 8mph", 30, 15, 16.43); // 3
+		createExercise("Sleeping", 30, 15, 1); // 4
+		createExercise("Sitting/Resting", 30, 15, 1.25);// 5
 
 		createNutritionalRecommendation("Grain", 85, "g");
 		createNutritionalRecommendation("Vegetables", 177, "g");
@@ -506,65 +502,274 @@ public class HealthBuddyDbAdapter {
 		createNutritionalRecommendation("Dairy", 400, "ml");
 		createNutritionalRecommendation("Protein", 141, "g");
 
-		// public boolean updateNutrient(long _id,
-		// String NutritionRecommendationTable_FK, int ScanID,
-		// String foodType, String FoodOrNutrientName, int foodMinPortion,
-		// int caloriesPerMinPortion, int numberOfContainers,
-		// String containerType, double measurement, String measurementUnit)
+		// createUserExerciseLog(exerciseId_FK, startTime, finishTime,
+		// logDuration, logFrequency, user_id_FK)
+		// Wednesday 23.11.11 from 0.00 to 24.00
 
-		createNutrient("Grain", 111111, "Grain", "Cornflakes", 1, 113, 1,
-				"Bowel", 30, "g");
-		createNutrient("Dairy", 11111, "Dairy", "Milk", 1, 159, 1, "cup", 250,
-				"ml");
+		// /////Weekday activities
+		createUserExerciseLog(4, 000, -1, 420, "Wednesdays", 1);// sleeping
+		createUserExerciseLog(5, 700, -1, 90, "Wednesdays", 1);// resting
+		createUserExerciseLog(2, 830, -1, 30, "Wednesdays", 1);// walking to
+																// work
+		createUserExerciseLog(5, 900, -1, 480, "Wednesdays", 1);// sitting at
+																// office work
+		createUserExerciseLog(2, 1700, -1, 30, "Wednesdays", 1);// walking home
+		createUserExerciseLog(5, 1730, -1, 330, "Wednesdays", 1);// resting
+																	// after
+																	// a hard
+																	// days
+																	// work
+		createUserExerciseLog(5, 2300, -1, 60, "Wednesdays", 1);// sleeping
 
-		createNutrient("Dairy", 111111, "Chocolate", "Dairy Milk Cadburys", 1,
-				255, 1, "Bar", 49, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Dream Cadburys", 1, 250,
-				1, "Bar", 45, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Rolo Nestle", 1, 247, 1,
+		// /////Weekday activities
+		createUserExerciseLog(4, 000, -1, 420, "Thursdays", 1);// sleeping
+		createUserExerciseLog(5, 700, -1, 90, "Thursdays", 1);// resting
+		createUserExerciseLog(2, 830, -1, 30, "Thursdays", 1);// walking to work
+		createUserExerciseLog(5, 900, -1, 480, "Thursdays", 1);// sitting at
+																// office work
+		createUserExerciseLog(1, 1700, -1, 30, "Thursdays", 1);// walking home
+		createUserExerciseLog(5, 1730, -1, 330, "Thursdays", 1);// resting after
+																// a hard days
+																// work
+		createUserExerciseLog(5, 2300, -1, 60, "Thursdays", 1);// sleeping
+
+		// /////Weekday activities
+		createUserExerciseLog(4, 000, -1, 420, "Fridays", 1);// sleeping
+		createUserExerciseLog(5, 700, -1, 90, "Fridays", 1);// resting
+		createUserExerciseLog(2, 830, -1, 30, "Fridays", 1);// walking to work
+		createUserExerciseLog(5, 900, -1, 480, "Fridays", 1);// sitting at
+																// office work
+		createUserExerciseLog(2, 1700, -1, 30, "Fridays", 1);// walking home
+		createUserExerciseLog(5, 1730, -1, 330, "Fridays", 1);// resting after
+																// a hard days
+																// work
+		createUserExerciseLog(5, 2300, -1, 60, "Fridays", 1);// sleeping
+
+		// /////Weekday activities
+		createUserExerciseLog(4, 000, -1, 420, "Mondays", 1);// sleeping
+		createUserExerciseLog(5, 700, -1, 90, "Mondays", 1);// resting
+		createUserExerciseLog(2, 830, -1, 30, "Mondays", 1);// walking to work
+		createUserExerciseLog(5, 900, -1, 480, "Mondays", 1);// sitting at
+																// office work
+		createUserExerciseLog(2, 1700, -1, 30, "Mondays", 1);// walking home
+		createUserExerciseLog(5, 1730, -1, 330, "Mondays", 1);// resting after
+																// a hard days
+																// work
+		createUserExerciseLog(5, 2300, -1, 60, "Mondays", 1);// sleeping
+
+		// /////Weekday activities
+		createUserExerciseLog(4, 000, -1, 420, "Tuesdays", 1);// sleeping
+		createUserExerciseLog(5, 700, -1, 90, "Tuesdays", 1);// resting
+		createUserExerciseLog(2, 830, -1, 30, "Tuesdays", 1);// walking to work
+		createUserExerciseLog(5, 900, -1, 480, "Tuesdays", 1);// sitting at
+																// office work
+		createUserExerciseLog(2, 1700, -1, 30, "Tuesdays", 1);// walking home
+		createUserExerciseLog(5, 1730, -1, 330, "Tuesdays", 1);// resting after
+																// a hard days
+																// work
+		createUserExerciseLog(5, 2300, -1, 60, "Tuesdays", 1);// sleeping
+
+		// ///Weekend activiities
+		createUserExerciseLog(4, 000, -1, 420, "Saturdays", 1);// sleeping
+		createUserExerciseLog(5, 700, -1, 300, "Saturdays", 1);// resting
+		createUserExerciseLog(3, 1200, -1, 90, "Saturdays", 1);// running at a
+																// football
+																// match
+		createUserExerciseLog(5, 1330, -1, 270, "Saturdays", 1);// resting
+		createUserExerciseLog(2, 1800, -1, 60, "Saturdays", 1);// walking the
+																// dog in the
+																// park
+		createUserExerciseLog(5, 1900, -1, 240, "Saturdays", 1);// resting
+		createUserExerciseLog(4, 2300, -1, 60, "Saturdays", 1);// sleeping
+
+		createUserExerciseLog(4, 000, -1, 420, "Sundays", 1);// sleeping
+		createUserExerciseLog(5, 700, -1, 360, "Sundays", 1);// resting
+		createUserExerciseLog(2, 1300, -1, 60, "Sundays", 1);// walking in the
+																// dog
+		createUserExerciseLog(5, 1400, -1, 540, "Sundays", 1);// resting
+		createUserExerciseLog(4, 000, -1, 60, "Sundays", 1);// sleeping
+
+		// ////Nutrients
+		// createUserNutritionLog(NutritionId_FK, startTime, finishTime,
+		// logFrequency, logPortion, user_id_FK)
+		// Wednesday
+		createUserNutritionLog(211, 8300, -1, "Wednesdays", -1, 1);// Cornflakes
+		createUserNutritionLog(54, 1000, -1, "Wednesdays", -1, 1);// Black
+																	// Coffee
+		createUserNutritionLog(11, 1000, -1, "Wednesdays", -1, 1);// Mars bar
+		createUserNutritionLog(224, 1300, -1, "Wednesdays", -1, 1);// Ham and
+																	// Swiss
+																	// cheese
+																	// panini
+		createUserNutritionLog(230, 1800, -1, "Wednesdays", -1, 1);// Bangors
+																	// and Mash
+		createUserNutritionLog(214, 2130, -1, "Wednesdays", -1, 1);// Two Toast
+																	// with
+																	// butter
+																	// and Jam
+
+		// Thursday
+		createUserNutritionLog(211, 8300, -1, "Thursdays", -1, 1);// Cornflakes
+		createUserNutritionLog(54, 1000, -1, "Thursdays", -1, 1);// Black
+																	// Coffee
+		createUserNutritionLog(11, 1000, -1, "Thursdays", -1, 1);// Mars bar
+		createUserNutritionLog(224, 1300, -1, "Thursdays", -1, 1);// Ham and
+																	// Swiss
+																	// cheese
+																	// panini
+		createUserNutritionLog(114, 1800, -1, "Thursdays", -1, 1);// Tagliatelle
+		createUserNutritionLog(230, 2130, -1, "Thursdays", -1, 1);// Two Toast
+																	// with
+																	// butter
+																	// and Jam
+
+		// Fridays
+		createUserNutritionLog(211, 8300, -1, "Fridays", -1, 1);// Cornflakes
+		createUserNutritionLog(54, 1000, -1, "Fridays", -1, 1);// Black
+																// Coffee
+		createUserNutritionLog(11, 1000, -1, "Fridays", -1, 1);// Mars bar
+		createUserNutritionLog(224, 1300, -1, "Fridays", -1, 1);// Ham and
+																// Swiss
+																// cheese
+																// panini
+		createUserNutritionLog(131, 1800, -1, "Fridays", -1, 1);// Chicken
+																// Breast
+																// with Lime
+																// Sauce and
+																// Vegetable
+		createUserNutritionLog(230, 2130, -1, "Fridays", -1, 1);// Two Toast
+																// with
+																// butter
+																// and Jam
+
+		// Saturdays
+
+		createUserNutritionLog(211, 8300, -1, "Saturdays", -1, 1);// Cornflakes
+		createUserNutritionLog(54, 1000, -1, "Saturdays", -1, 1);// Black
+																	// Coffee
+		createUserNutritionLog(11, 1000, -1, "Saturdays", -1, 1);// Mars bar
+		createUserNutritionLog(224, 1300, -1, "Saturdays", -1, 1);// Ham and
+																	// Swiss
+																	// cheese
+																	// panini
+		createUserNutritionLog(131, 1800, -1, "Saturdays", -1, 1);// Chicken
+																	// Breast
+																	// with Lime
+																	// Sauce and
+																	// Vegetable
+		createUserNutritionLog(230, 2130, -1, "Saturdays", -1, 1);// Two Toast
+																	// with
+																	// butter
+																	// and Jam
+
+		// Sundays
+		createUserNutritionLog(211, 8300, -1, "Sundays", -1, 1);// Cornflakes
+		createUserNutritionLog(54, 1000, -1, "Sundays", -1, 1);// Black
+																// Coffee
+		createUserNutritionLog(11, 1000, -1, "Sundays", -1, 1);// Mars bar
+		createUserNutritionLog(224, 1300, -1, "Sundays", -1, 1);// Ham and
+																// Swiss
+																// cheese
+																// panini
+		createUserNutritionLog(131, 1800, -1, "Sundays", -1, 1);// Chicken
+																// Breast
+																// with Lime
+																// Sauce and
+																// Vegetable
+		createUserNutritionLog(230, 2130, -1, "Sundays", -1, 1);// Two Toast
+																// with
+																// butter
+																// and Jam
+
+		// Mondays
+		createUserNutritionLog(211, 8300, -1, "Mondays", -1, 1);// Cornflakes
+		createUserNutritionLog(54, 1000, -1, "Mondays", -1, 1);// Black
+																// Coffee
+		createUserNutritionLog(11, 1000, -1, "Mondays", -1, 1);// Mars bar
+		createUserNutritionLog(224, 1300, -1, "Mondays", -1, 1);// Ham and
+																// Swiss
+																// cheese
+																// panini
+		createUserNutritionLog(230, 1800, -1, "Mondays", -1, 1);// Bangors
+																// and Mash
+		createUserNutritionLog(214, 2130, -1, "Mondays", -1, 1);// Two Toast
+																// with
+																// butter
+																// and Jam
+
+		// Tuesdays
+		createUserNutritionLog(211, 8300, -1, "Tuesdays", -1, 1);// Cornflakes
+		createUserNutritionLog(54, 1000, -1, "Tuesdays", -1, 1);// Black
+																// Coffee
+		createUserNutritionLog(11, 1000, -1, "Tuesdays", -1, 1);// Mars bar
+		createUserNutritionLog(224, 1300, -1, "Tuesdays", -1, 1);// Ham and
+																	// Swiss
+																	// cheese
+																	// panini
+		createUserNutritionLog(230, 1800, -1, "Tuesdays", -1, 1);// Bangors
+																	// and Mash
+		createUserNutritionLog(214, 2130, -1, "Tuesdays", -1, 1);// Two Toast
+																	// with
+																	// butter
+																	// and Jam
+
+		// createUserExerciseLog(1, 0, -1, -1, "Wednesday", 2);
+		// createUserExerciseLog(1, 7, -1, 30, "Wednesday", 2);
+		//
+		// createUserExerciseLog(4, 1322092800, -1, 30, "Wednesday", 2);
+		//
+		// createUserExerciseLog(4, 0, 7, -1, "Wednesday", 2);
+
+		// createUserNutritionLog(100, 830, -1, "Wednesday", 1, 1);
+
+		createNutrient("S", 111111, "Chocolate", "Dairy Milk Cadburys", 1, 255,
+				1, "Bar", 49, "g");
+		createNutrient("S", 111111, "Chocolate", "Dream Cadburys", 1, 250, 1,
+				"Bar", 45, "g");
+		createNutrient("S", 111111, "Chocolate", "Rolo Nestle", 1, 247, 1,
 				"Pack", 52.5, "g");
-		createNutrient("Dairy", 111111, "Chocolate",
+		createNutrient("Sk", 111111, "Chocolate",
 				"Dairy Milk with Caramel Cadburys", 1, 240, 1, "Bar", 50, "g");
-		createNutrient("Dairy", 111111, "Chocolate",
+		createNutrient("Snack", 111111, "Chocolate",
 				"Dairy Milk with Fruit  Nut Cadburys", 1, 240, 1, "Bar", 49,
 				"g");
-		createNutrient("Dairy", 111111, "Chocolate", "Toffee Crisp Nestle", 1,
-				227, 1, "Bar", 44, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Crunchie Cadburys", 1,
-				200, 1, "Bar", 42, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Snickers Mars", 1, 190,
-				1, "Size", 38, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Maltesers Mars", 1, 187,
-				1, "Packet", 37, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Turkish Delight Frys", 1,
+		createNutrient("S", 111111, "Chocolate", "Toffee Crisp Nestle", 1, 227,
+				1, "Bar", 44, "g");
+		createNutrient("S", 111111, "Chocolate", "Crunchie Cadburys", 1, 200,
+				1, "Bar", 42, "g");
+		createNutrient("S", 111111, "Chocolate", "Snickers Mars", 1, 190, 1,
+				"Size", 38, "g");
+		createNutrient("S", 111111, "Chocolate", "Maltesers Mars", 1, 187, 1,
+				"Packet", 37, "g");
+		createNutrient("S", 111111, "Chocolate", "Turkish Delight Frys", 1,
 				186, 1, "Bar", 51, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Mars Bar Mars", 1, 175,
-				1, "Size", 32, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Flake Cadburys", 1, 170,
-				1, "Bar", 32, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Crme Egg Cadburys", 1,
-				170, 1, "Egg", 39, "g");
-		createNutrient("Dairy", 111111, "Chocolate",
-				"Buttons Dairy Milk Cadburys", 1, 170, 1, "Pack", 32.5, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Aero Nestle", 1, 164, 1,
+		createNutrient("S", 111111, "Chocolate", "Mars Bar Mars", 1, 175, 1,
+				"Size", 32, "g");
+		createNutrient("S", 111111, "Chocolate", "Flake Cadburys", 1, 170, 1,
+				"Bar", 32, "g");
+		createNutrient("S", 111111, "Chocolate", "Crme Egg Cadburys", 1, 170,
+				1, "Egg", 39, "g");
+		createNutrient("S", 111111, "Chocolate", "Buttons Dairy Milk Cadburys",
+				1, 170, 1, "Pack", 32.5, "g");
+		createNutrient("S", 111111, "Chocolate", "Aero Nestle", 1, 164, 1,
 				"Bar", 31, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Twix Mars", 1, 143, 1,
-				"Bar", 29, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Bounty Mars", 1, 135, 1,
+		createNutrient("S", 111111, "Chocolate", "Twix Mars", 1, 143, 1, "Bar",
+				29, "g");
+		createNutrient("S", 111111, "Chocolate", "Bounty Mars", 1, 135, 1,
 				"Bar", 28, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Milky Way Mars", 1, 118,
-				1, "Bar", 26, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Twirl Cadburys", 1, 116,
-				1, "Finger", 22, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Fudge Cadburys", 1, 110,
-				1, "Bar", 25, "g");
-		createNutrient("Dairy", 111111, "Chocolate", "Kit Kat Nestle", 1, 106,
-				2, "Fingers", 21, "g");
+		createNutrient("S", 111111, "Chocolate", "Milky Way Mars", 1, 118, 1,
+				"Bar", 26, "g");
+		createNutrient("S", 111111, "Chocolate", "Twirl Cadburys", 1, 116, 1,
+				"Finger", 22, "g");
+		createNutrient("S", 111111, "Chocolate", "Fudge Cadburys", 1, 110, 1,
+				"Bar", 25, "g");
+		createNutrient("S", 111111, "Chocolate", "Kit Kat Nestle", 1, 106, 2,
+				"Fingers", 21, "g");
 
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Mocha White Chocolate Skimmed Whip Tall Starbucks", 1,
 				344, 1, "tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Frappuccino Mocha With Whip  Syrup Tall Starbucks", 1, 331, 1,
 				"tall", 354, "ml");
 		createNutrient(
@@ -573,450 +778,500 @@ public class HealthBuddyDbAdapter {
 				"Coffee",
 				"Coffee Mocha With Whipped Cream Semi Skimmed Milk Regular Caffe Nero",
 				1, 326, 1, "cup", 180, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Latte Chai Semi Skimmed Milk Caffe Nero", 1, 283, 1,
 				"Latte", 423, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Mocha Peppermint Skimmed Tall Starbucks", 1, 237, 1,
 				"tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
-				"Coffee Mocha Pret a Manger", 1, 232, 1, "serving", 340, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
-				"Coffee Frappe Latte Caffe Nero", 1, 210, 1, "regular", 369.4,
-				"g");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee", "Coffee Mocha Pret a Manger", 1,
+				232, 1, "serving", 340, "ml");
+		createNutrient("C", 111111, "Coffee", "Coffee Frappe Latte Caffe Nero",
+				1, 210, 1, "regular", 369.4, "g");
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Caffe Latte Whole Milk Tall Starbucks", 1, 200, 1,
 				"tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
-				"Coffee Latte Pret a Manger", 1, 194, 1, "serving", 340, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee", "Coffee Latte Pret a Manger", 1,
+				194, 1, "serving", 340, "ml");
+		createNutrient("C", 111111, "Coffee",
 				"Frappuccino Coffee Tall Starbucks", 1, 190, 1, "tall", 354,
 				"ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Caramel Macchiato Skimmed Milk Tall Starbucks", 1, 173,
 				1, "tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee", "Coffee Cappuccino EAT", 1,
-				168, 1, "tall", 355, "ml");
+		createNutrient("C", 111111, "Coffee", "Coffee Cappuccino EAT", 1, 168,
+				1, "tall", 355, "ml");
 		createNutrient("Coffee", 111111, "Coffee",
 				"Frappuccino Espresso Tall Starbucks", 1, 165, 1, "tall", 354,
 				"ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Iced latte Whole Milk With Syrup Tall Starbucks", 1,
 				160, 1, "tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Latte Skimmed Milk Tall EAT", 1, 142, 1, "tall", 355,
 				"ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Iced Latte Skimmed Milk  Syrup Tall Starbucks", 1, 122,
 				1, "tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Frappuccino Coffee Light Tall Starbucks", 1, 119, 1, "tall",
 				354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Cappuccino Weight Watchers", 1, 115, 1, "beaker", 230,
 				"ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Caffe Misto Whole Milk Tall Starbucks", 1, 106, 1,
 				"tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Cappucino FullFat Milk No Chocolate Pret a Manger", 1,
 				102, 1, "serving", 355, "ml");
-		createNutrient("Coffee", 111111, "Coffee", "Coffee Mocha Nescafe", 1,
-				92, 1, "sachet", 22, "g");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee", "Coffee Mocha Nescafe", 1, 92, 1,
+				"sachet", 22, "g");
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Cappuccino Instant Kenco", 1, 8, 1, "sachet", 20, "g");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Cappuccino Skimmed Milk Tall Starbucks", 1, 76, 1,
 				"tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Iced Latte Skimmed Milk Tall Starbucks", 1, 73, 1,
 				"tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Caffe Misto Skimmed Milk Tall Starbucks", 1, 64, 1,
 				"tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee", "Coffee White made With", 1,
-				51, 1, "cup", 190, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee", "Coffee White made With", 1, 51,
+				1, "cup", 190, "ml");
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Instant Made With Water  SemiSkimmed Milk", 1, 24, 1,
 				"serving", 350, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee White Klix Vending Machine", 1, 23, 1, "cup", 190, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Caffe Americano Tall Starbucks", 1, 11, 1, "tall", 354,
 				"ml");
-		createNutrient("Coffee", 111111, "Coffee",
-				"Coffee Brewed Tall Starbucks", 1, 7, 1, "tall", 354, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
-				"Coffee Espresso Solo Starbucks", 1, 6, 1, "solo", 30, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
+		createNutrient("C", 111111, "Coffee", "Coffee Brewed Tall Starbucks",
+				1, 7, 1, "tall", 354, "ml");
+		createNutrient("C", 111111, "Coffee", "Coffee Espresso Solo Starbucks",
+				1, 6, 1, "solo", 30, "ml");
+		createNutrient("C", 111111, "Coffee",
 				"Coffee Decaffeinated Gold Blend Nescafe", 1, 5, 1, "Tsp", 5,
 				"g");
-		createNutrient("Coffee", 111111, "Coffee", "Coffee Black", 1, 5, 1,
-				"mug", 270, "ml");
-		createNutrient("Coffee", 111111, "Coffee",
-				"Coffee Iced Tall Starbucks", 1, 4, 1, "tall", 354, "ml");
+		createNutrient("C", 111111, "Coffee", "Coffee Black", 1, 5, 1, "mug",
+				270, "ml");
+		createNutrient("C", 111111, "Coffee", "Coffee Iced Tall Starbucks", 1,
+				4, 1, "tall", 354, "ml");
 
-		createNutrient("Drinks", 111111, "Drinks",
+		// X means Drink because D is taken for Dairy
+		createNutrient("X", 111111, "Drinks",
 				"Gin  Tonic Premixed Canned Gordons", 1, 213, 1, "Can", 250,
 				"ml");
-		createNutrient("Drinks", 111111, "Drinks", "Beer Bitter Draught", 1,
-				182, 1, "Pint", 568, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Larger Average", 1, 165, 1,
+		createNutrient("X", 111111, "Drinks", "Beer Bitter Draught", 1, 182, 1,
 				"Pint", 568, "ml");
-		createNutrient("Drinks", 111111, "Drinks",
+		createNutrient("X", 111111, "Drinks", "Larger Average", 1, 165, 1,
+				"Pint", 568, "ml");
+		createNutrient("X", 111111, "Drinks",
 				"Smoothie Strawberries  Bananas Innocent", 1, 143, 1, "Bottle",
 				250, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Cola Coke CocaCola", 1,
-				142, 1, "Can", 330, "ml");
-		createNutrient("Drinks", 111111, "Drinks",
+		createNutrient("X", 111111, "Drinks", "Cola Coke CocaCola", 1, 142, 1,
+				"Can", 330, "ml");
+		createNutrient("X", 111111, "Drinks",
 				"Juice Orange with Bits Tropicana", 1, 141, 1, "Bottle", 330,
 				"ml");
-		createNutrient("Drinks", 111111, "Drinks", "Juice Drink J", 1, 132, 1,
+		createNutrient("X", 111111, "Drinks", "Juice Drink J", 1, 132, 1,
 				"Bottle", 275, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Red Bull Regular", 1, 113,
-				1, "Can", 250, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Champagne Average", 1, 89,
-				1, "Glass", 120, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Wine White Medium", 1, 87,
-				1, "Glass", 120, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Wine Red", 1, 80, 1,
+		createNutrient("X", 111111, "Drinks", "Red Bull Regular", 1, 113, 1,
+				"Can", 250, "ml");
+		createNutrient("X", 111111, "Drinks", "Champagne Average", 1, 89, 1,
 				"Glass", 120, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Barcardi  Diet Coke", 1,
-				52, 1, "Serving", 275, "ml");
-		createNutrient("Drinks", 111111, "Drinks",
+		createNutrient("X", 111111, "Drinks", "Wine White Medium", 1, 87, 1,
+				"Glass", 120, "ml");
+		createNutrient("X", 111111, "Drinks", "Wine Red", 1, 80, 1, "Glass",
+				120, "ml");
+		createNutrient("X", 111111, "Drinks", "Barcardi  Diet Coke", 1, 52, 1,
+				"Serving", 275, "ml");
+		createNutrient("X", 111111, "Drinks",
 				"High Lights Chocolate Drink Dry Cadbury", 1, 37, 1, "Sachet",
 				10, "g");
-		createNutrient("Drinks", 111111, "Drinks",
+		createNutrient("X", 111111, "Drinks",
 				"Tea Made With Water With Semi Skimmed Milk", 1, 14, 1, "Cup",
 				200, "ml");
-		createNutrient("Drinks", 111111, "Drinks",
+		createNutrient("X", 111111, "Drinks",
 				"Drinks Infusion Average With Semi Skimmed Milk", 1, 14, 1,
 				"Cup", 220, "ml");
-		createNutrient("Drinks", 111111, "Drinks",
+		createNutrient("X", 111111, "Drinks",
 				"Ribena Blackcurrant Really Light No Added Sugar", 1, 8, 1,
 				"Carton", 250, "ml");
-		createNutrient("Drinks", 111111, "Drinks",
+		createNutrient("X", 111111, "Drinks",
 				"Tea Earl Gray Infusion With Water", 1, 3, 1, "Mug", 250, "ml");
-		createNutrient("Drinks", 111111, "Drinks", "Water Mineral or Tap", 1,
-				0, 1, "Glass", 250, "ml");
+		createNutrient("X", 111111, "Drinks", "Water Mineral or Tap", 1, 0, 1,
+				"Glass", 250, "ml");
 
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
+		createNutrient("V", 111111, "Fruit and Veg",
 				"Red Kidney Beans In Water Tesco", 1, 391, 1, "Can", 420, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
+		createNutrient("V", 111111, "Fruit and Veg",
 				"Potatoes Baked Flesh  Skin", 1, 245, 1, "Med", 180, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg",
+		createNutrient("F", 111111, "Fruit and Veg",
 				"Banana Fresh Weighed Without Skin", 1, 143, 1, "Med", 150, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
-				"Sweet Corn Green Giant", 1, 140, 1, "Can", 200, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg",
-				"Apricots Dried Sundora", 1, 83, 1, "Serving", 50, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Pear Average Raw", 1,
-				68, 1, "Med", 170, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Orange", 1, 59, 1,
-				"Med", 160, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
-				"Garden Peas Birds Eye", 1, 53, 1, "Serving", 85, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
+		createNutrient("V", 111111, "Fruit and Veg", "Sweet Corn Green Giant",
+				1, 140, 1, "Can", 200, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Apricots Dried Sundora",
+				1, 83, 1, "Serving", 50, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Pear Average Raw", 1, 68,
+				1, "Med", 170, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Orange", 1, 59, 1, "Med",
+				160, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Garden Peas Birds Eye",
+				1, 53, 1, "Serving", 85, "g");
+		createNutrient("V", 111111, "Fruit and Veg",
 				"Potatoes New Boiled in Salted Water", 1, 53, 1, "Bunch", 100,
 				"g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Cherries Black Raw",
-				1, 51, 1, "Bunch", 100, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Apples Eating Raw",
-				1, 53, 1, "Med", 112, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Mango Raw", 1, 60, 1,
+		createNutrient("F", 111111, "Fruit and Veg", "Cherries Black Raw", 1,
+				51, 1, "Bunch", 100, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Apples Eating Raw", 1,
+				53, 1, "Med", 112, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Mango Raw", 1, 60, 1,
 				"Bunch", 225, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Blueberries Raw", 1,
-				60, 1, "Bunch", 100, "g");
-		createNutrient("VegeFruit", 111111, "Fruit and Veg", "Kiwi Fruit", 1,
-				49, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg", "Onions Raw", 1,
-				36, 1, "Bunch", 100, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Peach Raw", 1, 36, 1,
+		createNutrient("F", 111111, "Fruit and Veg", "Blueberries Raw", 1, 60,
+				1, "Bunch", 100, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Kiwi Fruit", 1, 49, 1,
+				"Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Onions Raw", 1, 36, 1,
+				"Bunch", 100, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Peach Raw", 1, 36, 1,
 				"Med", 110, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Plums", 1, 36, 1,
+		createNutrient("F", 111111, "Fruit and Veg", "Plums", 1, 36, 1,
 				"Bunch", 100, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Satsumas", 1, 36, 1,
+		createNutrient("F", 111111, "Fruit and Veg", "Satsumas", 1, 36, 1,
 				"Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
-				"Cauliflower Raw", 1, 34, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
-				"Broccoli Green Raw", 1, 33, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
+		createNutrient("V", 111111, "Fruit and Veg", "Cauliflower Raw", 1, 34,
+				1, "Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Broccoli Green Raw", 1,
+				33, 1, "Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg",
 				"Peppers Capsicum Red Raw", 1, 32, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
-				"Carrots Young Raw", 1, 30, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg", "Broccoli Raw",
-				1, 30, 1, "Bunch", 100, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Strawberries Raw", 1,
-				27, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg", "Melon Average",
-				1, 24, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
+		createNutrient("V", 111111, "Fruit and Veg", "Carrots Young Raw", 1,
+				30, 1, "Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Broccoli Raw", 1, 30, 1,
+				"Bunch", 100, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Strawberries Raw", 1, 27,
+				1, "Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Melon Average", 1, 24, 1,
+				"Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg",
 				"Green Beans French Beans Boiled in Unsalted Water", 1, 22, 1,
 				"Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg", "Courgette Raw",
-				1, 18, 1, "Bunch", 100, "g");
-		createNutrient("Fruit", 111111, "Fruit and Veg", "Grapes Average", 1,
-				17, 1, "Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Courgette Raw", 1, 18, 1,
+				"Bunch", 100, "g");
+		createNutrient("F", 111111, "Fruit and Veg", "Grapes Average", 1, 17,
+				1, "Bunch", 100, "g");
 		createNutrient("Fruit", 111111, "Fruit and Veg", "Tomato Raw", 1, 14,
 				1, "Med", 85, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
-				"Lettuce Average Raw", 1, 14, 1, "Med", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg",
-				"Mushrooms Common Raw", 1, 13, 1, "Bunch", 100, "g");
-		createNutrient("Vegetables", 111111, "Fruit and Veg", "Cucumber Raw",
-				1, 10, 1, "Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Lettuce Average Raw", 1,
+				14, 1, "Med", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Mushrooms Common Raw", 1,
+				13, 1, "Bunch", 100, "g");
+		createNutrient("V", 111111, "Fruit and Veg", "Cucumber Raw", 1, 10, 1,
+				"Bunch", 100, "g");
 
-		createNutrient("Protein", 111111, "Main Meals",
-				"Lasagne Pizza Express", 1, 514, 1, "Serving", 350, "g");
-		createNutrient("Protein", 111111, "Main Meals",
-				"Toad in the Hole Aunt Bessies", 1, 452, 1, "Serving", 190, "g");
-		createNutrient("Protein", 111111, "Main Meals",
-				"Tikka Masala Chicken  Pilau Rice GFY Asda", 1, 440, 1, "Pack",
+		createNutrient("V P G", 111111, "Main Meals", "Lasagne Pizza Express", 1,
+				514, 1, "Serving", 350, "g");
+
+		createNutrient("P G", 111111, "Main Meals",
+				"Tikka Masala Chicken", 1, 440, 1, "Pack",
 				400, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P G", 111111, "Main Meals",
 				"Chilli Con Carne With Rice Perfectly Balanced Waitrose", 1,
 				404, 1, "Pack", 400, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Beef Dinner Roast Birds Eye", 1, 386, 1, "Meal", 340, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Bake Vegetable Marks  Spencer", 1, 383, 1, "Pack", 450, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Bolognese Spaghetti Marks  Spencer", 1, 380, 1, "Pack", 400,
 				"g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Chicken Kiev Bernard Matthews", 1, 373, 1, "Kiev", 125, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P V", 111111, "Main Meals",
 				"Sausage  Mash Healthy Living Tesco", 1, 369, 1, "Pack", 450,
 				"g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P V", 111111, "Main Meals",
 				"Tagliatelle Mushroom  Bacon BGTY Sainsburys", 1, 368, 1,
 				"Pack", 400, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P G", 111111, "Main Meals",
 				"Bake Tuna  Pasta Healthy Living Tesco", 1, 360, 1, "Pack",
 				400, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Pizza Mushroom  Ham COU Marks  Spencer", 1, 355, 1, "Pizza",
 				245, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("V D", 111111, "Main Meals",
 				"Cauliflower Cheese Finest Tesco", 1, 318, 1, "Serving", 250,
 				"g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Burgers Beef Aberdeen Angus Marks  Spencer", 1, 298, 1,
 				"Burger", 142, "g");
-		createNutrient("Protein", 111111, "Main Meals",
-				"Chilli Non Carne Linda McCartney", 1, 275, 1, "Pack", 340, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Canelloni Spinach  Ricotta BGTY Sainsburys", 1, 246, 1,
 				"Pack", 300, "g");
-		createNutrient("Protein", 111111, "Main Meals",
+		createNutrient("P", 111111, "Main Meals",
 				"Cod Battered Chop Shop Youngs", 1, 237, 1, "Portion", 113, "g");
-		createNutrient("Protein", 111111, "Main Meals",
-				"Pie Cottage Weight Watchers", 1, 230, 1, "Pack", 320, "g");
-		createNutrient("Protein", 111111, "Main Meals",
-				"Hot Pot Beef Weight Watchers", 1, 210, 1, "Pack", 320, "g");
-		createNutrient("Protein", 111111, "Main Meals",
-				"Salmon Fillet Raw Average", 1, 149, 1, "Fillet", 79, "g");
-		createNutrient("Protein", 111111, "Main Meals",
-				"Fish Fingers Birds Eye", 1, 140, 3, "Fingers", 75, "g");
-		createNutrient("Protein", 111111, "Main Meals", "Burgers Beef", 1, 120,
-				1, "Burger", 41, "g");
-		createNutrient("Protein", 111111, "Main Meals", "Sausages Quorn", 1,
-				96, 2, "Sausages", 85, "g");
-		createNutrient("Protein", 111111, "Main Meals", "Burger Quorn", 1, 73,
-				1, "Burger", 50, "g");
 
-		createNutrient("Snacks", 111111, "Snacks", "Nuts Brazilian", 1, 275,
-				12, "Whole", 40, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("P", 111111, "Main Meals", "Salmon Fillet Raw Average",
+				1, 149, 1, "Fillet", 79, "g");
+		createNutrient("P", 111111, "Main Meals", "Fish Fingers Birds Eye", 1,
+				140, 3, "Fingers", 75, "g");
+		createNutrient("P", 111111, "Main Meals", "Burgers Beef", 1, 120, 1,
+				"Burger", 41, "g");
+		createNutrient("P", 111111, "Main Meals", "Sausages Quorn", 1, 96, 2,
+				"Sausages", 85, "g");
+		createNutrient("P", 111111, "Main Meals", "Burger Quorn", 1, 73, 1,
+				"Burger", 50, "g");
+
+		createNutrient("S", 111111, "Snacks", "Nuts Brazilian", 1, 275, 12,
+				"Whole", 40, "g");
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Chargrilled Steak MAX Walkers", 1, 263, 1, "Bag", 50,
 				"g");
-		createNutrient("Snacks", 111111, "Snacks",
-				"Popcorn Toffee Blockbuster", 1, 220, 1, "Bag", 50, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks", "Popcorn Toffee Blockbuster", 1,
+				220, 1, "Bag", 50, "g");
+		createNutrient("S", 111111, "Snacks",
 				"Doritos Extreme Chilli Heatwave Doritos", 1, 200, 1, "Bag",
 				40, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Lime  Thai Spices Sensations Walkers", 1, 200, 1,
 				"Bag", 40, "g");
-		createNutrient("Snacks", 111111, "Snacks",
-				"Popcorn Salted Blockbuster", 1, 198, 1, "Bag", 50, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks", "Popcorn Salted Blockbuster", 1,
+				198, 1, "Bag", 50, "g");
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Vintage Cheddar  Red Onion Chutney Sensations Walkers",
 				1, 162, 1, "Bag", 40, "g");
-		createNutrient("Snacks", 111111, "Snacks",
-				"Crisps Salt  Shake Walkers", 1, 161, 1, "Bag", 30, "g");
-		createNutrient("Snacks", 111111, "Snacks",
-				"Nuts Salted Roasted Luxury KP", 1, 152, 1, "Bag", 25, "g");
+		createNutrient("S", 111111, "Snacks", "Crisps Salt  Shake Walkers", 1,
+				161, 1, "Bag", 30, "g");
+		createNutrient("S", 111111, "Snacks", "Nuts Salted Roasted Luxury KP",
+				1, 152, 1, "Bag", 25, "g");
 		createNutrient("Snacks", 111111, "Snacks", "Nuts Pistachio", 1, 136, 1,
 				"Bag", 25, "g");
-		createNutrient("Snacks", 111111, "Snacks", "Nuts  Raisins Mixed KP", 1,
-				133, 1, "Bag", 25, "g");
-		createNutrient("Snacks", 111111, "Snacks",
-				"Crisps Ready Salted Walkers", 1, 128, 1, "Bag", 25, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks", "Nuts  Raisins Mixed KP", 1, 133,
+				1, "Bag", 25, "g");
+		createNutrient("S", 111111, "Snacks", "Crisps Ready Salted Walkers", 1,
+				128, 1, "Bag", 25, "g");
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Cheese  Onion Cheese Heads Walkers", 1, 121, 1, "Bag",
 				27, "g");
-		createNutrient("Snacks", 111111, "Snacks", "Frazzles Bacon Walkers", 1,
-				114, 1, "Bag", 25, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks", "Frazzles Bacon Walkers", 1, 114,
+				1, "Bag", 25, "g");
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Sour Cream  Chive Lights Walkers", 1, 107, 1, "Bag",
 				24, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks",
 				"Monster Munch Pickled Onion Walkers", 1, 106, 1, "Bag", 22,
 				"g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Roast Chicken Potato Heads Walkers", 1, 101, 1, "Bag",
 				23, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Naked Potato Heads Walkers", 1, 98, 1, "Bag", 23, "g");
-		createNutrient("Snacks", 111111, "Snacks", "Quavers Cheese Walkers", 1,
-				95, 1, "Bag", 20, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks", "Quavers Cheese Walkers", 1, 95,
+				1, "Bag", 20, "g");
+		createNutrient("S", 111111, "Snacks",
 				"Crisps Salt  Vinegar Baked Walkers", 1, 94, 1, "Bag", 25, "g");
-		createNutrient("Snacks", 111111, "Snacks", "Wotsits Cheesy Walkers", 1,
-				93, 1, "Bag", 19, "g");
-		createNutrient("Snacks", 111111, "Snacks",
+		createNutrient("S", 111111, "Snacks", "Wotsits Cheesy Walkers", 1, 93,
+				1, "Bag", 19, "g");
+		createNutrient("S", 111111, "Snacks",
 				"French Fries Worcester Sauce Walkers", 1, 92, 1, "Bag", 22,
 				"g");
-		createNutrient("Snacks", 111111, "Snacks",
-				"Wotsits Prawn Cocktail Walkers", 1, 90, 1, "Bag", 19, "g");
-		createNutrient("Snacks", 111111, "Snacks",
-				"Squares Salt  Vinegar Walkers", 1, 90, 1, "Bag", 25, "g");
+		createNutrient("S", 111111, "Snacks", "Wotsits Prawn Cocktail Walkers",
+				1, 90, 1, "Bag", 19, "g");
+		createNutrient("S", 111111, "Snacks", "Squares Salt  Vinegar Walkers",
+				1, 90, 1, "Bag", 25, "g");
 
-		createNutrient("Protein", 111111, "Takeaway",
+		createNutrient("P G", 111111, "Takeaway",
 				"Chicken Sandwich Burger King", 1, 659, 1, "Sandwich", 224, "g");
-		createNutrient("Protein", 111111, "Takeaway",
+		createNutrient("P G D", 111111, "Takeaway",
 				"Quarter Pounder With Cheese McDonalds", 1, 515, 1, "Burger",
 				206, "g");
-		createNutrient("Protein", 111111, "Takeaway", "Big Mac McDonalds", 1,
-				492, 1, "Mac", 215, "g");
-		createNutrient("Protein", 111111, "Takeaway",
+		createNutrient("P G", 111111, "Takeaway", "Big Mac McDonalds", 1, 492,
+				1, "Mac", 215, "g");
+		createNutrient("P G", 111111, "Takeaway",
 				"McChicken Sandwich McDonalds", 1, 376, 1, "Sandwich", 167, "g");
-		createNutrient("Protein", 111111, "Takeaway", "Cheeseburger McDonalds",
+		createNutrient("G D P", 111111, "Takeaway", "Cheeseburger McDonalds",
 				1, 300, 1, "Burger", 122, "g");
-		createNutrient("Protein", 111111, "Takeaway", "Hamburger McDonalds", 1,
+		createNutrient("G P", 111111, "Takeaway", "Hamburger McDonalds", 1,
 				254, 1, "Burger", 108, "g");
-		createNutrient("Protein", 111111, "Takeaway", "Fries McDonalds", 1,
-				224, 1, "Portion", 78, "g");
-		createNutrient("Protein", 111111, "Takeaway",
+		createNutrient("V", 111111, "Takeaway", "Fries McDonalds", 1, 224, 1,
+				"Portion", 78, "g");
+		createNutrient("P", 111111, "Takeaway",
 				"Extra Crispy Chicken Drumstick Kentucky Fried Chicken", 1,
 				195, 1, "Drumstick", 67, "g");
-		createNutrient("Protein", 111111, "Takeaway", "Hash Brown McDonalds",
-				1, 127, 1, "Portion", 56, "g");
-		createNutrient("Protein", 111111, "Takeaway",
+		createNutrient("V", 111111, "Takeaway", "Hash Brown McDonalds", 1, 127,
+				1, "Portion", 56, "g");
+		createNutrient("D G V", 111111, "Takeaway",
 				"Cheese  Tomato Pizza Dominos Pizza", 1, 125, 1, "Slice", 52,
 				"g");
-		createNutrient("Protein", 111111, "Takeaway", "Garlic Bread Pizza Hut",
-				1, 101, 1, "Slice", 24, "g");
+		createNutrient("G", 111111, "Takeaway", "Garlic Bread Pizza Hut", 1,
+				101, 1, "Slice", 24, "g");
 
-		createNutrient("Protein", 111111, "Fish", "Scampi Breaded Average", 1,
-				565, 1, "Serving", 255, "g");
-		createNutrient("Protein", 111111, "Fish",
-				"Mackerel Fillets Smoked Average", 1, 200, 1, "Serving", 60,
-				"g");
-		createNutrient("Protein", 111111, "Fish", "Salmon Fillet Aldi", 1, 198,
-				1, "Fillet", 100, "g");
-		createNutrient("Protein", 111111, "Fish",
-				"Cod Fillet Battered Average", 1, 158, 1, "Fillet", 90, "g");
-		createNutrient("Protein", 111111, "Fish", "Sardines Grilled", 1, 146,
-				3, "Sardines", 75, "g");
-		createNutrient("Protein", 111111, "Fish", "Fishcakes Frozen Average",
-				1, 112, 1, "Cake", 85, "g");
-		createNutrient("Protein", 111111, "Fish",
-				"Tuna Chunks in Brine Sainsburys", 1, 105, 1, "Tin", 45, "g");
-		createNutrient("Protein", 111111, "Fish", "Shark Raw", 1, 102, 1,
-				"Serving", 100, "g");
-		createNutrient("Protein", 111111, "Fish",
-				"Haddock Fillet Smoked Youngs", 1, 98, 1, "Fillet", 100, "g");
-		createNutrient("Protein", 111111, "Fish", "Langoustine Raw Average", 1,
-				90, 1, "Serving", 100, "g");
-		createNutrient("Protein", 111111, "Fish", "Lobster Boiled", 1, 88, 2,
+		createNutrient("P", 111111, "Fish", "Scampi Breaded Average", 1, 565,
+				1, "Serving", 255, "g");
+		createNutrient("P", 111111, "Fish", "Mackerel Fillets Smoked Average",
+				1, 200, 1, "Serving", 60, "g");
+		createNutrient("P", 111111, "Fish", "Salmon Fillet Aldi", 1, 198, 1,
+				"Fillet", 100, "g");
+		createNutrient("P", 111111, "Fish", "Cod Fillet Battered Average", 1,
+				158, 1, "Fillet", 90, "g");
+		createNutrient("P", 111111, "Fish", "Sardines Grilled", 1, 146, 3,
+				"Sardines", 75, "g");
+		createNutrient("P", 111111, "Fish", "Fishcakes Frozen Average", 1, 112,
+				1, "Cake", 85, "g");
+		createNutrient("P", 111111, "Fish", "Tuna Chunks in Brine Sainsburys",
+				1, 105, 1, "Tin", 45, "g");
+		createNutrient("P", 111111, "Fish", "Shark Raw", 1, 102, 1, "Serving",
+				100, "g");
+		createNutrient("P", 111111, "Fish", "Haddock Fillet Smoked Youngs", 1,
+				98, 1, "Fillet", 100, "g");
+		createNutrient("P", 111111, "Fish", "Langoustine Raw Average", 1, 90,
+				1, "Serving", 100, "g");
+		createNutrient("P", 111111, "Fish", "Lobster Boiled", 1, 88, 2,
 				"TbspMeat", 85, "g");
-		createNutrient("Protein", 111111, "Fish", "Shrimp Boiled Average", 1,
-				70, 1, "Serving", 60, "g");
-		createNutrient("Protein", 111111, "Fish", "Prawns Boiled", 1, 59, 20,
+		createNutrient("P", 111111, "Fish", "Shrimp Boiled Average", 1, 70, 1,
+				"Serving", 60, "g");
+		createNutrient("P", 111111, "Fish", "Prawns Boiled", 1, 59, 20,
 				"Prawns", 60, "g");
-		createNutrient("Protein", 111111, "Fish", "Crab Sticks Tesco", 1, 45,
-				3, "Sticks", 45, "g");
-		createNutrient("Protein", 111111, "Fish", "Mussels Boiled Average", 1,
-				36, 5, "Mussels", 35, "g");
+		createNutrient("P", 111111, "Fish", "Crab Sticks Tesco", 1, 45, 3,
+				"Sticks", 45, "g");
+		createNutrient("P", 111111, "Fish", "Mussels Boiled Average", 1, 36, 5,
+				"Mussels", 35, "g");
 
-		createNutrient("Protein", 111111, "Sushi", "Tuna  Salmon Sushi Itsu",
-				1, 315, 1, "Box", 282, "g");
-		createNutrient("Protein", 111111, "Sushi", "Sushi Selection Ichiban",
-				1, 253, 1, "Pack", 161, "g");
-		createNutrient("Protein", 111111, "Sushi",
-				"Sushi Rice Dry Weight Nishiki", 1, 249, 1, "Serving", 70, "g");
-		createNutrient("Protein", 111111, "Sushi",
+		createNutrient("P", 111111, "Sushi", "Tuna  Salmon Sushi Itsu", 1, 315,
+				1, "Box", 282, "g");
+		createNutrient("P", 111111, "Sushi", "Sushi Selection Ichiban", 1, 253,
+				1, "Pack", 161, "g");
+		createNutrient("P", 111111, "Sushi", "Sushi Rice Dry Weight Nishiki",
+				1, 249, 1, "Serving", 70, "g");
+		createNutrient("P", 111111, "Sushi",
 				"Fine Beans Shredded Fresh Ginger Wakame Sushi Itsu", 1, 222,
 				1, "Pack", 250, "g");
-		createNutrient("Protein", 111111, "Sushi",
-				"Salmon Sushi Roll I Love Sushi", 1, 195, 1, "Roll", 125, "g");
-		createNutrient("Protein", 111111, "Sushi",
-				"Prawn Nigiri Sushi Sushi San", 1, 190, 1, "Pack", 138, "g");
-		createNutrient("Protein", 111111, "Sushi",
+		createNutrient("P", 111111, "Sushi", "Salmon Sushi Roll I Love Sushi",
+				1, 195, 1, "Roll", 125, "g");
+		createNutrient("P", 111111, "Sushi", "Prawn Nigiri Sushi Sushi San", 1,
+				190, 1, "Pack", 138, "g");
+		createNutrient("P", 111111, "Sushi",
 				"California Sushi Rolls Sushi San", 1, 169, 1, "Pack", 123, "g");
-		createNutrient("Protein", 111111, "Sushi", "Prawn Sushi Itsu", 1, 151,
-				1, "Portion", 98, "g");
-		createNutrient("Protein", 111111, "Sushi",
+		createNutrient("P", 111111, "Sushi", "Prawn Sushi Itsu", 1, 151, 1,
+				"Portion", 98, "g");
+		createNutrient("P", 111111, "Sushi",
 				"Vegetarian Sushi Roll I Love Sushi", 1, 141, 1, "Roll", 125,
 				"g");
-		createNutrient("Protein", 111111, "Sushi", "Salmon Sushi Itsu", 1, 129,
-				1, "Portion", 64, "g");
-		createNutrient("Protein", 111111, "Sushi", "Sushi Seasoning Mitsukan",
-				1, 50, 2, "Tbsp", 30, "ml");
-		createNutrient("Protein", 111111, "Sushi",
-				"Sushi Akami Tuna Nigiri Wasabi", 1, 43, 1, "Piece", 45, "g");
-		createNutrient("Protein", 111111, "Sushi", "Sushi Ginger Mitoku", 1, 4,
-				1, "Serving", 18, "g");
+		createNutrient("P", 111111, "Sushi", "Salmon Sushi Itsu", 1, 129, 1,
+				"Portion", 64, "g");
+		createNutrient("P", 111111, "Sushi", "Sushi Seasoning Mitsukan", 1, 50,
+				2, "Tbsp", 30, "ml");
+		createNutrient("P", 111111, "Sushi", "Sushi Akami Tuna Nigiri Wasabi",
+				1, 43, 1, "Piece", 45, "g");
+		createNutrient("P", 111111, "Sushi", "Sushi Ginger Mitoku", 1, 4, 1,
+				"Serving", 18, "g");
 
-		createNutrient("Protein", 111111, "Subway", "Meatball Marinara Sub", 1,
+		createNutrient("G P", 111111, "Subway", "Meatball Marinara Sub", 1,
 				520, 6, "InchSub", 382, "");
-		createNutrient("Protein", 111111, "Subway", "Chicken  Bacon Ranch Sub",
-				1, 489, 6, "InchSub", 309, "g");
-		createNutrient("Protein", 111111, "Subway", "Spicy Italian Sub", 1,
-				461, 6, "InchSub", 229, "g");
-		createNutrient("Protein", 111111, "Subway", "Italian BMT Sub", 1, 429,
-				6, "InchSub", 245, "g");
-		createNutrient("Protein", 111111, "Subway", "Tuna Sub", 1, 402, 6,
+		createNutrient("G P", 111111, "Subway", "Chicken  Bacon Ranch Sub", 1,
+				489, 6, "InchSub", 309, "g");
+		createNutrient("G P", 111111, "Subway", "Spicy Italian Sub", 1, 461, 6,
+				"InchSub", 229, "g");
+		createNutrient("G P", 111111, "Subway", "Italian BMT Sub", 1, 429, 6,
+				"InchSub", 245, "g");
+		createNutrient("G P", 111111, "Subway", "Tuna Sub", 1, 402, 6,
 				"InchSub", 253, "g");
-		createNutrient("Protein", 111111, "Subway",
+		createNutrient("G P", 111111, "Subway",
 				"Sweet Onion Chicken Teriyaki Sub", 1, 352, 6, "InchSub", 283,
 				"");
-		createNutrient("Protein", 111111, "Subway", "Cheese Steak Sub", 1, 336,
+		createNutrient("P G D", 111111, "Subway", "Cheese Steak Sub", 1, 336,
 				6, "InchSub", 261, "g");
-		createNutrient("Protein", 111111, "Subway", "Club Sub", 1, 299, 6,
+		createNutrient("G P", 111111, "Subway", "Club Sub", 1, 299, 6,
 				"InchSub", 268, "g");
-		createNutrient("Protein", 111111, "Subway", "Turkey Breast Sub", 1,
-				256, 6, "InchSub", 226, "g");
-		createNutrient("Protein", 111111, "Subway", "Veggie Delite Sub", 1,
-				203, 6, "InchSub", 169, "g");
+		createNutrient("G P", 111111, "Subway", "Turkey Breast Sub", 1, 256, 6,
+				"InchSub", 226, "g");
+		createNutrient("G V", 111111, "Subway", "Veggie Delite Sub", 1, 203, 6,
+				"InchSub", 169, "g");
 
-		createNutrient("Protein", 111111, "Eggs", "Egg Goose Whole Raw", 1,
-				232, 1, "Egg", 144, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Dried Whole Average", 1,
-				159, 1, "Serving", 28, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Duck Whole Raw", 1, 122,
-				1, "Egg", 75, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Whole Raw", 1, 108, 1,
-				"Egg", 66, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Fried", 1, 105, 1,
-				"Egg", 60, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Scrambled Average", 1,
-				100, 1, "Egg", 68, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Boiled", 1, 74, 1,
-				"Egg", 50, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Poached", 1, 74, 1,
-				"Egg", 50, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Yolk Raw", 1, 48, 1,
-				"Yolk", 14, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg White Dried Average", 1,
-				41, 1, "Tbsp", 14, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg White Only Raw", 1, 21,
-				1, "Egg", 40, "g");
-		createNutrient("Protein", 111111, "Eggs", "Egg Quail Whole Raw", 1, 20,
-				1, "Egg", 13, "g");
+		createNutrient("P", 111111, "Eggs", "Egg Goose Whole Raw", 1, 232, 1,
+				"Egg", 144, "g");
+		createNutrient("P", 111111, "Eggs", "Egg Dried Whole Average", 1, 159,
+				1, "Serving", 28, "g");
+		createNutrient("P", 111111, "Eggs", "Egg Duck Whole Raw", 1, 122, 1,
+				"Egg", 75, "g");
+		createNutrient("P", 111111, "Eggs", "Egg Whole Raw", 1, 108, 1, "Egg",
+				66, "g");
+		createNutrient("P", 111111, "Eggs", "Egg Fried", 1, 105, 1, "Egg", 60,
+				"g");
+		createNutrient("P", 111111, "Eggs", "Egg Scrambled Average", 1, 100, 1,
+				"Egg", 68, "g");
+		createNutrient("P", 111111, "Eggs", "Egg Boiled", 1, 74, 1, "Egg", 50,
+				"g");
+		createNutrient("P", 111111, "Eggs", "Egg Poached", 1, 74, 1, "Egg", 50,
+				"g");
+		createNutrient("P", 111111, "Eggs", "Egg Yolk Raw", 1, 48, 1, "Yolk",
+				14, "g");
+		createNutrient("P", 111111, "Eggs", "Egg White Dried Average", 1, 41,
+				1, "Tbsp", 14, "g");
+		createNutrient("P", 111111, "Eggs", "Egg White Only Raw", 1, 21, 1,
+				"Egg", 40, "g");
+		createNutrient("P", 111111, "Eggs", "Egg Quail Whole Raw", 1, 20, 1,
+				"Egg", 13, "g");
+
+		// G for grain V for vegetable F for fruit D for Dairy S for Snack P for
+		// Protein C for Coffee Dr for Drinks
+		// Breakfast
+		createNutrient("G D", 111111, "Breakfast", "Cornflakes with milk", 1,
+				151, 1, "Bowel", 30, "g");
+		createNutrient("G D", 11111, "Breakfast", "Porridge Oats with milk", 1,
+				180, 1, "bowel", 85, "g");
+		createNutrient("G", 11111, "Breakfast", "Rice Crispies with milk", 1,
+				181, 1, "bowel", 85, "g");
+		createNutrient("G", 11111, "Breakfast",
+				"Two Toast with butter and Jam", 1, 261, 1, "serving", 85, "g");
+		createNutrient("G", 11111, "Breakfast", "Medium Croisant", 1, 231, 1,
+				"item", 80, "g");
+
+		// Dairy
+		createNutrient("D", 11111, "Dairy", "Milk", 1, 159, 1, "cup", 250, "ml");
+		createNutrient("D", 11111, "Dairy", "Yoghurt", 1, 146, 1, "cup", 125,
+				"ml");
+		createNutrient("D", 11111, "Dairy",
+				"Cheese, Cheddar, Slow Matured, Anchor", 1, 172, 1, "serving",
+				40, "g");
+		createNutrient("D", 11111, "Dairy", "Cheese Cream Light Benecol", 1,
+				58, 1, "serving", 40, "g");
+		createNutrient("D", 11111, "Dairy", "Thin spread of butter", 1, 51, 1,
+				"spread", 7, "g");
+
+		// Bread
+
+		createNutrient("G", 11111, "Bread", "White Bread Baguette", 1, 360, 1,
+				"loaf", 150, "g");
+		createNutrient("G", 11111, "Bread", "Slice of White Bread", 1, 37, 1,
+				"slice", 25, "g");
+		createNutrient("G", 11111, "Bread", "Slice of White Bread", 1, 37, 1,
+				"slice", 25, "g");
+
+		// Sandwiches
+		createNutrient("G D P", 11111, "Sandwiches",
+				"Ham and Swiss Cheese Panini", 1, 557, 1, "Sandwich", 223, "g");
+		createNutrient("G D P", 11111, "Sandwiches",
+				"Ham and Cheese Toasted Sandwich", 1, 429, 1, "Sandwich", 160,
+				"g");
+		createNutrient("G P", 11111, "Sandwiches", "Egg Mayonnaise Sandwich",
+				1, 253, 1, "Sandwich", 160, "g");
+		createNutrient("G P", 11111, "Sandwiches", "Ham Sandwich", 1, 349, 1,
+				"Sandwich", 210, "g");
+		createNutrient("G P", 11111, "Sandwiches", "Chicken Salad Sandwich", 1,
+				257, 1, "Sandwich", 195, "g");
+
+		// Main Meals
+		createNutrient("G V D P", 11111, "Main Meal", "Christmas Dinner", 1,
+				1240, 1, "Serving", 60, "g");
+		createNutrient("V P", 11111, "Main Meal",
+				"Bangors Mash Peas and Gravy", 1, 570, 1, "Serving", 60, "g");
+		createNutrient("V P", 11111, "Main Meal",
+				"Chicken Breast with Lime Sauce and Vegetable", 1, 501, 1,
+				"Serving", 60, "g");
 
 	}
 }
