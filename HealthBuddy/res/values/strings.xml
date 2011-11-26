@@ -5,6 +5,8 @@
     <string name="welcome">Welcome to the app! </string>
     <string name="splash">SplashScreen</string>
     <string name="app_name">HealthBuddy</string>
+    
+        <string name="sensitivity">Sensitivity\n(lower = more sensitive)</string>
 
     <string name="menu">Menu</string>
     <string name="user_profile">Profile</string>

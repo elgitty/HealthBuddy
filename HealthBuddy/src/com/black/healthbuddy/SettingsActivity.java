@@ -11,6 +11,7 @@ import android.widget.Button;
 public class SettingsActivity extends Activity implements OnClickListener {
 
 	private Button menuButton;
+	private Button debugButton;
 
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
@@ -20,6 +21,9 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		menuButton = (Button) findViewById(R.id.menu_button);
 		menuButton.setOnClickListener(this);
 		
+		debugButton = (Button) findViewById(R.id.debug_button);
+		debugButton.setOnClickListener(this);
+		
 	  }
 
     // launch activities by button click, with intents
@@ -28,6 +32,10 @@ public class SettingsActivity extends Activity implements OnClickListener {
 		if (menuButton.getId() == ((Button) v).getId()){
 			Intent toMenu = new Intent(this,MenuActivity.class);
 			this.startActivity(toMenu);
+		}
+		if (debugButton.getId() == ((Button) v).getId()) {
+			Intent toDebug = new Intent(this, debugActivity.class);
+			this.startActivity(toDebug);
 		}
 	}
 

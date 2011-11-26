@@ -41,6 +41,17 @@
             android:layout_gravity="center"
             android:layout_weight="1"
             android:text="FAQ" />
+        
+        
+        <Button
+            android:id="@+id/debug_button"
+            android:layout_width="fill_parent"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_weight="1"
+            android:text="Debug Screen" />
+        
+        
     </LinearLayout>
 
     <RelativeLayout

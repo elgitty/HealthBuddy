@@ -44,6 +44,9 @@ public class MenuActivity extends Activity implements OnClickListener {
 		mDbHelper.open();
 		mDbHelper.dropAndRecreateTables();
 		mDbHelper.insertDataIntoTables();
+		
+		getWindow().getAttributes().format = android.graphics.PixelFormat.RGBA_8888;
+
 
 		// //query for all nutritional logs
 		//
