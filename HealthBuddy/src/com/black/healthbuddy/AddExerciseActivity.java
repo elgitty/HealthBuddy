@@ -26,7 +26,7 @@ public class AddExerciseActivity extends ListActivity implements
 	private Button deleteButton;
 	private EditText delete_item;
 	private EditText update_item;
-	
+
 	private Button updateExerciseButton;
 	private Spinner s_exercise;
 	private Spinner s_time;
@@ -80,29 +80,47 @@ public class AddExerciseActivity extends ListActivity implements
 		updateExerciseButton.setOnClickListener(this);
 
 		delete_item = (EditText) findViewById(R.id.record_to_delete);
-		update_item = (EditText) findViewById(R.id.record_to_update);
+		update_item = (EditText) findViewById(R.id.record_to_delete);
 	}
 
 	private void fillData() {
+
+		String day = "";
+
+		Calendar calendar = Calendar.getInstance();
+		int weekday = calendar.get(Calendar.DAY_OF_WEEK);
+		if (weekday == 1) {
+			day = "Sundays";
+		} else if (weekday == 2) {
+			day = "Mondays";
+		} else if (weekday == 3) {
+			day = "Tuesdays";
+		} else if (weekday == 4) {
+			day = "Wednesdays";
+		} else if (weekday == 5) {
+			day = "Thursdays";
+		} else if (weekday == 6) {
+			day = "Fridays";
+		} else if (weekday == 7) {
+			day = "Saturdays";
+		}
+
 		// Get all of the notes from the database and create the item list
 		String[] my_search = new String[] { "ExerciseTable.exerciseName",
 				"UserExerciseLogTable._id", "UserExerciseLogTable.logDuration",
-				"ExerciseTable.minimumDuration",
-				"ExerciseTable.caloriesPerMinDuration",
-				"UserExerciseLogTable.logFrequency" };
+				"UserExerciseLogTable.finishTime" };
 
 		Cursor c = mDbHelper
 				.queryTable(
 						"UserExerciseLogTable JOIN ExerciseTable ON (UserExerciseLogTable.exerciseId_FK = ExerciseTable._id)",
-						my_search,
-						"UserExerciseLogTable.logFrequency = 'Fridays'", null,
-						null, null, null);
+						my_search, "UserExerciseLogTable.logFrequency = '"
+								+ day + "'", null, null, null, null);
 		startManagingCursor(c);
 
 		String[] from = new String[] { "UserExerciseLogTable._id",
 				"ExerciseTable.exerciseName",
 				"UserExerciseLogTable.logDuration",
-				"ExerciseTable.caloriesPerMinDuration" };
+				"UserExerciseLogTable.finishTime" };
 		int[] to = new int[] { R.id.text1, R.id.text2, R.id.text3, R.id.text4 };
 
 		SimpleCursorAdapter notes = new SimpleCursorAdapter(this, R.layout.row,
@@ -121,58 +139,95 @@ public class AddExerciseActivity extends ListActivity implements
 		} else if (deleteButton.getId() == ((Button) v).getId()) {
 			// put code to delete entry here
 			String delete_ID = delete_item.getText().toString();
-			long row_ID = Long.parseLong(delete_ID);
-			// Toast.makeText(this, delete_ID, Toast.LENGTH_LONG).show();
-			mDbHelper.open();
-			mDbHelper.deleteRecordInTable(row_ID, "UserExerciseLogTable");
-			mDbHelper.close();
-			// Toast.makeText( s_time.getContext(), "The day is " + weekday,
-			// Toast.LENGTH_LONG).show();
+			try {
+				long row_ID = Long.parseLong(delete_ID);
+				// Toast.makeText(this, delete_ID, Toast.LENGTH_LONG).show();
+				mDbHelper.open();
+				mDbHelper.deleteRecordInTable(row_ID, "UserExerciseLogTable");
 
-			Intent toSelf = new Intent(this, AddExerciseActivity.class);
-			this.startActivity(toSelf);
+				mDbHelper.close();
+				// Toast.makeText( s_time.getContext(), "The day is " + weekday,
+				// Toast.LENGTH_LONG).show();
+
+				Intent toSelf = new Intent(this, AddExerciseActivity.class);
+				this.startActivity(toSelf);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Toast.makeText(this, "You must specify an ID",
+						Toast.LENGTH_LONG).show();
+			}
 		} else if (updateExerciseButton.getId() == ((Button) v).getId()) {
 			String update_ID = update_item.getText().toString();
-			long row_ID = Long.parseLong(update_ID);
+			try {
+				long row_ID = Long.parseLong(update_ID);
 
-			
-			Toast.makeText( this, "The day is " + row_ID, Toast.LENGTH_LONG).show();
- 
-			mDbHelper.open();
+				mDbHelper.open();
 
-			int duration = Integer
-					.parseInt(s_time.getSelectedItem().toString());
-			// String day = Integer.toString(s_day.getSelectedItemPosition());
+				int duration = Integer.parseInt(s_time.getSelectedItem()
+						.toString());
+				// String day =
+				// Integer.toString(s_day.getSelectedItemPosition());
 
-			String day2 = "";
+				String day2 = "";
 
-			Calendar calendar = Calendar.getInstance();
-			int weekday = calendar.get(Calendar.DAY_OF_WEEK);
-			if (weekday == 1) {
-				day2 = "Sundays";
-			} else if (weekday == 2) {
-				day2 = "Mondays";
-			} else if (weekday == 3) {
-				day2 = "Tuesdays";
-			} else if (weekday == 4) {
-				day2 = "Wednesdays";
-			} else if (weekday == 5) {
-				day2 = "Thursdays";
-			} else if (weekday == 6) {
-				day2 = "Fridays";
-			} else if (weekday == 7) {
-				day2 = "Saturdays";
+				Calendar calendar = Calendar.getInstance();
+				int weekday = calendar.get(Calendar.DAY_OF_WEEK);
+				if (weekday == 1) {
+					day2 = "Sundays";
+				} else if (weekday == 2) {
+					day2 = "Mondays";
+				} else if (weekday == 3) {
+					day2 = "Tuesdays";
+				} else if (weekday == 4) {
+					day2 = "Wednesdays";
+				} else if (weekday == 5) {
+					day2 = "Thursdays";
+				} else if (weekday == 6) {
+					day2 = "Fridays";
+				} else if (weekday == 7) {
+					day2 = "Saturdays";
+				}
+
+				String[] my_search = new String[] {"ExerciseTable.caloriesPerMinDuration"};
+
+				Cursor c1 = mDbHelper.queryTable(
+						"ExerciseTable",my_search,
+						"ExerciseTable._id = "+s_exercise.getSelectedItemId(), null,
+						null, null, null);
+				startManagingCursor(c1);
+
+				long resultA = 0;
+
+
+				//	int i_minDur = c.getColumnIndexOrThrow("ExerciseTable.minimumDuration");
+					int i_calPerMinPor = c1.getColumnIndexOrThrow("ExerciseTable.caloriesPerMinDuration");
+
+
+					 for (c1.moveToFirst(); !c1.isAfterLast(); c1.moveToNext()) {
+					//		resultA = (int) (c.getInt(i_minDur)*c.getLong(i_calPerMinDur));
+							resultA = (c1.getLong(i_calPerMinPor));
+					 }
+
+				c1.close();
+
+				mDbHelper.updateUserExerciseLog(row_ID,
+						s_exercise.getSelectedItemPosition() + 1,
+						System.currentTimeMillis() % 86400000, resultA*duration, day2,
+						duration, 1);
+				mDbHelper.close();
+				// mDbHelper.updateUserExerciseLog(,s_exercise.getSelectedItemPosition()
+				// + 1,
+				// System.currentTimeMillis() % 86400000, -1, duration, day2,
+				// 1);
+				Intent toSelf = new Intent(this, AddExerciseActivity.class);
+				this.startActivity(toSelf);
+			} catch (NumberFormatException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+				Toast.makeText(this, "You must specify an ID",
+						Toast.LENGTH_LONG).show();
 			}
-			Toast.makeText( this, "The day is " + day2, Toast.LENGTH_LONG).show();
-
-			mDbHelper.createUserExerciseLog(
-					s_exercise.getSelectedItemPosition() + 1,
-					System.currentTimeMillis() % 86400000, -1, duration, day2, 1);
-			mDbHelper.close();
-//			mDbHelper.updateUserExerciseLog(row_ID,s_exercise.getSelectedItemPosition() + 1,
-//					System.currentTimeMillis() % 86400000, -1, duration, day2, 1);
-			Intent toSelf = new Intent(this, AddExerciseActivity.class);
-			this.startActivity(toSelf);
 		}
 	}
 

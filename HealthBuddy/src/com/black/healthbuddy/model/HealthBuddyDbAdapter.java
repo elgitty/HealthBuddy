@@ -507,87 +507,87 @@ public class HealthBuddyDbAdapter {
 		// Wednesday 23.11.11 from 0.00 to 24.00
 
 		// /////Weekday activities
-		createUserExerciseLog(4, 000, -1, 420, "Wednesdays", 1);// sleeping
-		createUserExerciseLog(5, 700, -1, 90, "Wednesdays", 1);// resting
-		createUserExerciseLog(2, 830, -1, 30, "Wednesdays", 1);// walking to
+		createUserExerciseLog(4, 000, 420, 420, "Wednesdays", 1);// sleeping
+		createUserExerciseLog(5, 700, 112, 90, "Wednesdays", 1);// resting
+		createUserExerciseLog(2, 830, 60, 30, "Wednesdays", 1);// walking to
 																// work
-		createUserExerciseLog(5, 900, -1, 480, "Wednesdays", 1);// sitting at
+		createUserExerciseLog(5, 900, 600, 480, "Wednesdays", 1);// sitting at
 																// office work
-		createUserExerciseLog(2, 1700, -1, 30, "Wednesdays", 1);// walking home
-		createUserExerciseLog(5, 1730, -1, 330, "Wednesdays", 1);// resting
+		createUserExerciseLog(2, 1700, 60, 30, "Wednesdays", 1);// walking home
+		createUserExerciseLog(5, 1730, 412, 330, "Wednesdays", 1);// resting
 																	// after
 																	// a hard
 																	// days
 																	// work
-		createUserExerciseLog(5, 2300, -1, 60, "Wednesdays", 1);// sleeping
+		createUserExerciseLog(4, 2300, 60, 60, "Wednesdays", 1);// sleeping
 
 		// /////Weekday activities
-		createUserExerciseLog(4, 000, -1, 420, "Thursdays", 1);// sleeping
-		createUserExerciseLog(5, 700, -1, 90, "Thursdays", 1);// resting
-		createUserExerciseLog(2, 830, -1, 30, "Thursdays", 1);// walking to work
-		createUserExerciseLog(5, 900, -1, 480, "Thursdays", 1);// sitting at
+		createUserExerciseLog(4, 000, 420, 420, "Thursdays", 1);// sleeping
+		createUserExerciseLog(5, 700, 112, 90, "Thursdays", 1);// resting
+		createUserExerciseLog(2, 830, 60, 30, "Thursdays", 1);// walking to work
+		createUserExerciseLog(5, 900, 600, 480, "Thursdays", 1);// sitting at
 																// office work
-		createUserExerciseLog(1, 1700, -1, 30, "Thursdays", 1);// walking home
-		createUserExerciseLog(5, 1730, -1, 330, "Thursdays", 1);// resting after
+		createUserExerciseLog(1, 1700, 180, 30, "Thursdays", 1);// walking home
+		createUserExerciseLog(5, 1730, 412, 330, "Thursdays", 1);// resting after
 																// a hard days
 																// work
-		createUserExerciseLog(5, 2300, -1, 60, "Thursdays", 1);// sleeping
+		createUserExerciseLog(5, 2300, 60, 60, "Thursdays", 1);// sleeping
 
 		// /////Weekday activities
-		createUserExerciseLog(4, 000, -1, 420, "Fridays", 1);// sleeping
-		createUserExerciseLog(5, 700, -1, 90, "Fridays", 1);// resting
-		createUserExerciseLog(2, 830, -1, 30, "Fridays", 1);// walking to work
-		createUserExerciseLog(5, 900, -1, 480, "Fridays", 1);// sitting at
+		createUserExerciseLog(4, 000, 420, 420, "Fridays", 1);// sleeping
+		createUserExerciseLog(5, 700, 112, 90, "Fridays", 1);// resting
+		createUserExerciseLog(2, 830, 60, 30, "Fridays", 1);// walking to work
+		createUserExerciseLog(5, 900, 600, 480, "Fridays", 1);// sitting at
 																// office work
-		createUserExerciseLog(2, 1700, -1, 30, "Fridays", 1);// walking home
-		createUserExerciseLog(5, 1730, -1, 330, "Fridays", 1);// resting after
+		createUserExerciseLog(2, 1700, 60, 30, "Fridays", 1);// walking home
+		createUserExerciseLog(5, 1730, 412, 330, "Fridays", 1);// resting after
 																// a hard days
 																// work
-		createUserExerciseLog(5, 2300, -1, 60, "Fridays", 1);// sleeping
+		createUserExerciseLog(4, 2300, 60, 60, "Fridays", 1);// sleeping
 
 		// /////Weekday activities
-		createUserExerciseLog(4, 000, -1, 420, "Mondays", 1);// sleeping
-		createUserExerciseLog(5, 700, -1, 90, "Mondays", 1);// resting
-		createUserExerciseLog(2, 830, -1, 30, "Mondays", 1);// walking to work
-		createUserExerciseLog(5, 900, -1, 480, "Mondays", 1);// sitting at
+		createUserExerciseLog(4, 000, 420, 420, "Mondays", 1);// sleeping
+		createUserExerciseLog(5, 700, 112, 90, "Mondays", 1);// resting
+		createUserExerciseLog(2, 830, 60, 30, "Mondays", 1);// walking to work
+		createUserExerciseLog(5, 900, 600, 480, "Mondays", 1);// sitting at
 																// office work
-		createUserExerciseLog(2, 1700, -1, 30, "Mondays", 1);// walking home
-		createUserExerciseLog(5, 1730, -1, 330, "Mondays", 1);// resting after
+		createUserExerciseLog(2, 1700, 60, 30, "Mondays", 1);// walking home
+		createUserExerciseLog(5, 1730, 412, 330, "Mondays", 1);// resting after
 																// a hard days
 																// work
-		createUserExerciseLog(5, 2300, -1, 60, "Mondays", 1);// sleeping
+		createUserExerciseLog(4, 2300, 60, 60, "Mondays", 1);// sleeping
 
 		// /////Weekday activities
-		createUserExerciseLog(4, 000, -1, 420, "Tuesdays", 1);// sleeping
-		createUserExerciseLog(5, 700, -1, 90, "Tuesdays", 1);// resting
-		createUserExerciseLog(2, 830, -1, 30, "Tuesdays", 1);// walking to work
-		createUserExerciseLog(5, 900, -1, 480, "Tuesdays", 1);// sitting at
+		createUserExerciseLog(4, 000, 420, 420, "Tuesdays", 1);// sleeping
+		createUserExerciseLog(5, 700, 112, 90, "Tuesdays", 1);// resting
+		createUserExerciseLog(2, 830, 60, 30, "Tuesdays", 1);// walking to work
+		createUserExerciseLog(5, 900, 600, 480, "Tuesdays", 1);// sitting at
 																// office work
-		createUserExerciseLog(2, 1700, -1, 30, "Tuesdays", 1);// walking home
-		createUserExerciseLog(5, 1730, -1, 330, "Tuesdays", 1);// resting after
+		createUserExerciseLog(2, 1700, 60, 30, "Tuesdays", 1);// walking home
+		createUserExerciseLog(5, 1730, 412, 330, "Tuesdays", 1);// resting after
 																// a hard days
 																// work
-		createUserExerciseLog(5, 2300, -1, 60, "Tuesdays", 1);// sleeping
+		createUserExerciseLog(4, 2300, 60, 60, "Tuesdays", 1);// sleeping
 
 		// ///Weekend activiities
-		createUserExerciseLog(4, 000, -1, 420, "Saturdays", 1);// sleeping
-		createUserExerciseLog(5, 700, -1, 300, "Saturdays", 1);// resting
-		createUserExerciseLog(3, 1200, -1, 90, "Saturdays", 1);// running at a
+		createUserExerciseLog(4, 000, 420, 420, "Saturdays", 1);// sleeping
+		createUserExerciseLog(5, 700, 375, 300, "Saturdays", 1);// resting
+		createUserExerciseLog(3, 1200, 1478, 90, "Saturdays", 1);// running at a
 																// football
 																// match
-		createUserExerciseLog(5, 1330, -1, 270, "Saturdays", 1);// resting
-		createUserExerciseLog(2, 1800, -1, 60, "Saturdays", 1);// walking the
+		createUserExerciseLog(5, 1330, 337, 270, "Saturdays", 1);// resting
+		createUserExerciseLog(2, 1800, 120, 60, "Saturdays", 1);// walking the
 																// dog in the
 																// park
-		createUserExerciseLog(5, 1900, -1, 240, "Saturdays", 1);// resting
-		createUserExerciseLog(4, 2300, -1, 60, "Saturdays", 1);// sleeping
+		createUserExerciseLog(5, 1900, 300, 240, "Saturdays", 1);// resting
+		createUserExerciseLog(4, 2300, 60, 60, "Saturdays", 1);// sleeping
 
-		createUserExerciseLog(4, 000, -1, 420, "Sundays", 1);// sleeping
-		createUserExerciseLog(5, 700, -1, 360, "Sundays", 1);// resting
-		createUserExerciseLog(2, 1300, -1, 60, "Sundays", 1);// walking in the
+		createUserExerciseLog(4, 000, 420, 420, "Sundays", 1);// sleeping
+		createUserExerciseLog(5, 700, 450, 360, "Sundays", 1);// resting
+		createUserExerciseLog(2, 1300, 120, 60, "Sundays", 1);// walking in the
 																// dog
-		createUserExerciseLog(5, 1400, -1, 540, "Sundays", 1);// resting
-		createUserExerciseLog(4, 000, -1, 60, "Sundays", 1);// sleeping
+		createUserExerciseLog(5, 1400, 675, 540, "Sundays", 1);// resting
+		createUserExerciseLog(4, 000, 60, 60, "Sundays", 1);// sleeping
 
 		// ////Nutrients
 		// createUserNutritionLog(NutritionId_FK, startTime, finishTime,

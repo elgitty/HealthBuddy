@@ -4,15 +4,15 @@
     android:orientation="vertical"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-        android:background="#006600"
+    android:background="@drawable/splash"
     
     >
-    
-<TextView  
+     
+<!-- <TextView  
     android:layout_width="fill_parent" 
     android:layout_height="wrap_content" 
     android:text="@string/splash"
-            android:textSize="60sp" />
+            android:textSize="60sp" /> -->
 
 
 </LinearLayout>

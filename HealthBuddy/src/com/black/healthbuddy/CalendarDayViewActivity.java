@@ -12,7 +12,6 @@ public class CalendarDayViewActivity extends Activity implements OnClickListener
 
     private Button calendarDayViewButton;
     private Button calendarWeekViewButton;
-    private Button calendarMonthViewButton;
     private Button menuButton;
 
 
@@ -22,15 +21,12 @@ public class CalendarDayViewActivity extends Activity implements OnClickListener
         setContentView(R.layout.calendar_day_view);
 		
         // wire the UI to the code	
-        calendarDayViewButton = (Button) findViewById(R.id.day_view_button);
+        calendarDayViewButton = (Button) findViewById(R.id.exercise_view_button);
         calendarDayViewButton.setOnClickListener(this);
 		
-        calendarWeekViewButton = (Button) findViewById(R.id.week_view_button);
+        calendarWeekViewButton = (Button) findViewById(R.id.food_view_button);
         calendarWeekViewButton.setOnClickListener(this);
-		
-        calendarMonthViewButton = (Button) findViewById(R.id.month_view_button);
-        calendarMonthViewButton.setOnClickListener(this);
-	    
+			    
 	    menuButton = (Button) findViewById(R.id.menu_button);
 	    menuButton.setOnClickListener(this);
         	
@@ -40,16 +36,12 @@ public class CalendarDayViewActivity extends Activity implements OnClickListener
 	@Override
 	public void onClick(View v) {
 		if (calendarDayViewButton.getId() == ((Button) v).getId()){
-		Intent toDayView = new Intent(this, CalendarDayViewActivity.class);
+		Intent toDayView = new Intent(this, AddExerciseActivity.class);
 		this.startActivity(toDayView);
 		}
 		else if (calendarWeekViewButton.getId() == ((Button) v).getId()){
-			Intent toWeekView = new Intent(this, CalendarWeekViewActivity.class);
+			Intent toWeekView = new Intent(this, AddNutritionActivity.class);
 			this.startActivity(toWeekView);
-		}
-		else if (calendarMonthViewButton.getId() == ((Button) v).getId()){
-			Intent toMonthView = new Intent(this, CalendarMonthViewActivity.class);
-			this.startActivity(toMonthView);
 		}
 		else if (menuButton.getId() == ((Button) v).getId()){
 			Intent toMenu = new Intent(this, MenuActivity.class);

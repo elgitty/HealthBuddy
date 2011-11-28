@@ -77,13 +77,6 @@
                 android:id="@+id/tableRow4"
                 android:layout_width="fill_parent"
                 android:layout_height="wrap_content" >
-
-               <Button
-                    android:id="@+id/day_view_button"
-                    android:layout_width="wrap_content"
-                    android:layout_height="wrap_content"
-                    android:layout_weight="1"
-                    android:text="@string/calendar" />
 
                 <Button
                     android:id="@+id/charts_button"
@@ -91,6 +84,13 @@
                     android:layout_height="wrap_content"
                     android:layout_weight="1"
                     android:text="@string/chart_menu" />
+
+                <Button
+                    android:id="@+id/day_view_button"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_weight="1"
+                    android:text="@string/calendar" />
             </TableRow>
         </TableLayout>
 

@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#0066FF"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -24,8 +24,7 @@
         <TableLayout
             android:id="@+id/tableLayout1"
             android:layout_width="fill_parent"
-            android:layout_height="wrap_content"
-            android:layout_marginBottom="50px" >
+            android:layout_height="wrap_content" >
 
             <TableRow
                 android:layout_width="fill_parent"
@@ -40,36 +39,17 @@
                 <TextView
                     android:layout_width="fill_parent"
                     android:layout_height="wrap_content"
-                    android:layout_marginLeft="35px"
-                    android:layout_weight="1"
+                    android:layout_marginLeft="75px"
+                    android:layout_weight="2"
                     android:text="Food"
                     android:textSize="15sp" />
 
-                <LinearLayout
-                    android:layout_width="fill_parent"
+                <TextView
+                    android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:layout_weight="1" >
-
-                    <LinearLayout
-                        android:layout_width="fill_parent"
-                        android:layout_height="wrap_content"
-                        android:layout_weight="1" >
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="50px"
-                            android:text="Portion"
-                            android:textSize="15sp" />
-
-                        <TextView
-                            android:layout_width="wrap_content"
-                            android:layout_height="wrap_content"
-                            android:layout_marginLeft="50px"
-                            android:text="Calories"
-                            android:textSize="15sp" />
-                    </LinearLayout>
-                </LinearLayout>
+                    android:layout_marginLeft="50px"
+                    android:text="Calories"
+                    android:textSize="15sp" />
             </TableRow>
 
             <ListView
@@ -85,10 +65,45 @@
                 android:text="@string/no_notes" />
         </TableLayout>
 
+        <TextView
+            android:layout_width="fill_parent"
+            android:layout_height="1dip"
+            android:layout_margin="7px"
+            android:background="#003333" />
+
         <LinearLayout
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_gravity="center" >
+            android:id="@+id/linearLayout3"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:minWidth="125px"
+                android:text="Type of Meal:" />
+
+            <Spinner
+                android:id="@+id/meal_spinner"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_weight="1" />
+
+            <Button
+                android:id="@+id/refine_button"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="@string/refine_button" />
+        </LinearLayout>
+
+        <Spinner
+            android:id="@+id/search_spinner"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" />
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content" >
 
             <EditText
                 android:id="@+id/record_to_delete"
@@ -105,6 +120,13 @@
                 android:layout_height="wrap_content"
                 android:layout_gravity="center_vertical"
                 android:text="Delete Entry" />
+
+            <Button
+                android:id="@+id/update"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:text="Update Entry" />
         </LinearLayout>
     </LinearLayout>
 

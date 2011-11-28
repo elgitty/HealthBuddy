@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#0066FF"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -16,46 +16,23 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center"
-            android:layout_marginBottom="15px"
-            android:text="@string/calendar_day_view"
-            android:textSize="25sp" />
+            android:text="@string/calendar"
+            android:textSize="25sp" />      
 
-        <LinearLayout
-            android:id="@+id/linearLayout1"
-            android:layout_width="match_parent"
-            android:layout_height="wrap_content" >
+    <Button
+        android:id="@+id/food_view_button"
+        android:text="View today's food planner" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+    />
 
-            <Button
-                android:id="@+id/day_view_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/calendar_day_view" />
-
-            <Button
-                android:id="@+id/week_view_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/calendar_week_view" />
-
-            <Button
-                android:id="@+id/month_view_button"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:layout_weight="1"
-                android:text="@string/calendar_month_view" />
-        </LinearLayout>
-               
-        <ListView android:id="@+id/android:list"
-          android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"/>
-        
-        <TextView android:id="@+id/android:empty"
-          android:layout_width="wrap_content"
-        	android:layout_height="wrap_content"
-        	android:text="@string/no_entry"/>
-        
+    <Button
+        android:id="@+id/exercise_view_button"
+        android:text="View today's exercise planner" 
+        android:layout_width="fill_parent"
+        android:layout_height="wrap_content"        
+    />
+    
     </LinearLayout>
 
     <Button

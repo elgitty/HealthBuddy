@@ -28,6 +28,7 @@ public class MenuActivity extends Activity implements OnClickListener {
 	private Button chartsButton;
 	private Button userButton;
 	private Button calendarDayViewButton;
+	
 	private Button settingsButton;
 
 	// database object
@@ -37,25 +38,11 @@ public class MenuActivity extends Activity implements OnClickListener {
 	@Override
 	public void onCreate(Bundle savedInstanceState) {
 		super.onCreate(savedInstanceState);
-		// setContentView(R.layout.menu);
+		 setContentView(R.layout.menu);
 
 		// ////////Database stuff
 		mDbHelper = new HealthBuddyDbAdapter(this);
 		mDbHelper.open();
-		mDbHelper.dropAndRecreateTables();
-		mDbHelper.insertDataIntoTables();
-		
-		getWindow().getAttributes().format = android.graphics.PixelFormat.RGBA_8888;
-
-
-		// //query for all nutritional logs
-		//
-		// Cursor c =
-		// this.queryTable(
-		// "UserNutritionLogTable JOIN NutritionTable ON (UserNutritionLogTable.NutritionId_FK  = NutritionTable._id)",
-		// null,
-		// null,
-		// null, null, null, null);
 
 		// ///// query for all exercise logs
 		Cursor c = mDbHelper

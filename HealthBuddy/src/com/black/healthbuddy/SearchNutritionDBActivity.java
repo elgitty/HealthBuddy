@@ -13,6 +13,7 @@ import android.view.View.OnClickListener;
 import android.widget.ArrayAdapter;
 import android.widget.Button;
 import android.widget.Spinner;
+import android.widget.Toast;
 //import android.widget.LinearLayout;
 import android.widget.SimpleCursorAdapter;
 
@@ -40,9 +41,22 @@ public class SearchNutritionDBActivity extends Activity implements
 
 		mDbHelper = new HealthBuddyDbAdapter(this);
 		mDbHelper.open();
+		
+		
+		String search_condition = null;
+		Bundle extras = getIntent().getExtras();
+		if(extras !=null) {
+			search_condition = extras.getString("criteria");
+		}
+//		if (search_condition == "makenull")
+//			search_condition = null;
+
+		
+		
+//		Toast.makeText( this, search_condition, Toast.LENGTH_LONG).show();
 
 		String[] my_search = new String[] { "FoodOrNutrientName", "_id" };
-		Cursor c = mDbHelper.queryTable("NutritionTable", my_search, null,
+		Cursor c = mDbHelper.queryTable("NutritionTable", my_search, search_condition,
 				null, null, null, null);
 		startManagingCursor(c);
 		String[] from = new String[] { "FoodOrNutrientName" };
@@ -114,18 +128,33 @@ public class SearchNutritionDBActivity extends Activity implements
 			//duration = ((Integer)s_time.getItemAtPosition(s_time.getSelectedItemPosition())).intValue();
 	 		//duration = ((Number)s_time.getSelectedItem()).intValue();
 			mDbHelper.open();
-			mDbHelper.createUserNutritionLog(s_meal.getSelectedItemPosition() + 1, System.currentTimeMillis() % 86400000, -1, day, portion, 1);
-		//	createUserExerciseLog(s_exercise.getSelectedItemPosition() + 1,
-		//			System.currentTimeMillis() % 86400000,	-1, duration, day2, 1);
+			
+			
+			int food_id = (int) s_meal.getSelectedItemId();
+			
+//			Toast.makeText( this, "food = "+food_id, Toast.LENGTH_LONG).show();
+			
+			mDbHelper.createUserNutritionLog(food_id, System.currentTimeMillis() % 86400000, -1, day, portion, 1);
 			mDbHelper.close();
-			
-			
-			
+	//		c1.close();
 			Intent toAdd = new Intent(this, AddNutritionActivity.class);
 			this.startActivity(toAdd);
-		} else if (menuButton.getId() == ((Button) v).getId()) {
+		} 
+		else if (menuButton.getId() == ((Button) v).getId()) {
 			Intent toMenu = new Intent(this, MenuActivity.class);
 			this.startActivity(toMenu);
+		} 
+		else if (refineButton.getId() == ((Button) v).getId()) {
+			Intent toSelf = new Intent(this, SearchNutritionDBActivity.class);
+			String mystring = s_foodtype.getSelectedItem().toString();
+//			Toast.makeText( this, mystring, Toast.LENGTH_LONG).show();
+
+		if (mystring.equals("All foods")){mystring = "null";}
+		else mystring = "NutritionTable.foodType = '"+mystring+"'";
+		
+			toSelf.putExtra("criteria",mystring);
+
+			this.startActivity(toSelf);
 		}
 	}
 }

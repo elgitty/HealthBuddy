@@ -2,7 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     android:layout_width="fill_parent"
     android:layout_height="fill_parent"
-    android:background="#0066FF"
+    android:background="@drawable/background"
     android:orientation="vertical" >
 
     <LinearLayout
@@ -20,25 +20,18 @@
             android:textSize="25sp" />      
 
     <Button
-        android:id="@+id/day_view_button"
-        android:text="@string/calendar_day_view" 
+        android:id="@+id/food_view_button"
+        android:text="View today's food planner" 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"        
     />
 
     <Button
-        android:id="@+id/week_view_button"
-        android:text="@string/calendar_week_view" 
+        android:id="@+id/exercise_view_button"
+        android:text="View today's exercise planner" 
         android:layout_width="fill_parent"
         android:layout_height="wrap_content"        
     />
-
-    <Button 
-        android:id="@+id/month_view_button" 
-        android:text="@string/calendar_month_view"
-        android:layout_width="fill_parent" 
-        android:layout_height="wrap_content" 
-    />    
     
     </LinearLayout>
 

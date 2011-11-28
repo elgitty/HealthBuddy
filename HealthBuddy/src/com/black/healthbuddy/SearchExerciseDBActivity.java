@@ -80,7 +80,7 @@ public class SearchExerciseDBActivity extends Activity implements
 
 		  int weekday = calendar.get(Calendar.DAY_OF_WEEK);
 
-		Toast.makeText( s_time.getContext(), "The day is " + weekday, Toast.LENGTH_LONG).show();
+//		Toast.makeText( s_time.getContext(), "The day is " + weekday, Toast.LENGTH_LONG).show();
 ////		
 //		
 		
@@ -106,20 +106,40 @@ public class SearchExerciseDBActivity extends Activity implements
 			  else if (weekday==6){day2 = "Fridays";}
 			  else if (weekday==7){day2 = "Saturdays";}
 			}
-//			
-			
-			
+//			Toast.makeText( this, "The day is " + s_exercise.getSelectedItemId(), Toast.LENGTH_LONG).show();
+			mDbHelper.open();
 
+				String[] my_search = new String[] { "ExerciseTable.caloriesPerMinDuration"};
+
+			Cursor c1 = mDbHelper.queryTable(
+							"ExerciseTable",my_search,
+							"ExerciseTable._id = "+s_exercise.getSelectedItemId(), null,
+							null, null, null);
+			startManagingCursor(c1);
+			
+			long resultA = 0;
+
+
+		//	int i_minDur = c.getColumnIndexOrThrow("ExerciseTable.minimumDuration");
+			int i_calPerMinPor = c1.getColumnIndexOrThrow("ExerciseTable.caloriesPerMinDuration");
+
+
+			 for (c1.moveToFirst(); !c1.isAfterLast(); c1.moveToNext()) {
+			//		resultA = (int) (c.getInt(i_minDur)*c.getLong(i_calPerMinDur));
+					resultA = (c1.getLong(i_calPerMinPor));
+			 }
+			
+			c1.close();
+			
 			//int duration = (Integer) s_time.getItemAtPosition(s_time.getSelectedItemPosition());
 			//duration = ((Integer)s_time.getItemAtPosition(s_time.getSelectedItemPosition())).intValue();
 	 		//duration = ((Number)s_time.getSelectedItem()).intValue();
 			
-			mDbHelper.open();
 			mDbHelper.createUserExerciseLog(s_exercise.getSelectedItemPosition() + 1,
 					System.currentTimeMillis() % 86400000,
-					-1, duration, day2, 1);
+					resultA*duration, duration, day2, 1);
 			mDbHelper.close();
-
+//
 			Intent toAddExercise = new Intent(this, AddExerciseActivity.class);
 			this.startActivity(toAddExercise);
 		} else if (menuButton.getId() == ((Button) v).getId()) {
