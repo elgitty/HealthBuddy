@@ -236,6 +236,8 @@ public class RDAReccomendedVerusConsumed extends AbstractDemoChart {
     renderer.addXTextLabel(4, "Protein");
     renderer.addXTextLabel(5, "Dairy");
     renderer.addXTextLabel(6, "Snack");
+    
+    renderer.setMargins(new int[] {50,50,50,50});
 
     int length = renderer.getSeriesRendererCount();
     for (int j = 0; j < length; j++) {

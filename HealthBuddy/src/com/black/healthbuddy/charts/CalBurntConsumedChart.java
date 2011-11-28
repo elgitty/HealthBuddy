@@ -223,7 +223,7 @@ public class CalBurntConsumedChart extends AbstractDemoChart {
     int[] colors = new int[] { Color.RED, Color.BLUE };
     XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
     renderer.setOrientation(Orientation.VERTICAL);
-    setChartSettings(renderer, "Weeks Calories Consumed versus Calories Burnt", "Day", "Calories", 0,
+    setChartSettings(renderer, "Weeks Calories Consumed versus Calories Burnt", "", "Calories", 0,
         8, 0, 3000, Color.GRAY, Color.LTGRAY);
     
     renderer.setXLabels(1);
@@ -235,6 +235,9 @@ public class CalBurntConsumedChart extends AbstractDemoChart {
     renderer.addXTextLabel(5, "Sun");
     renderer.addXTextLabel(6, "Mon");
     renderer.addXTextLabel(7, "Tues");
+    
+    renderer.setMargins(new int[] {20,20,20,20});
+    
     int length = renderer.getSeriesRendererCount();
     for (int j = 0; j < length; j++) {
       SimpleSeriesRenderer seriesRenderer = renderer.getSeriesRendererAt(j);

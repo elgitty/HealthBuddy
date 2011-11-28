@@ -1,5 +1,7 @@
 package com.black.healthbuddy;
 
+import java.util.Calendar;
+
 import android.app.Activity;
 import android.content.Intent;
 import android.database.Cursor;
@@ -198,19 +200,27 @@ public class MenuActivity extends Activity implements OnClickListener {
 		// ///////////////changing the default values from xml
 		// finding the view with the id user_name and casting it into a TextView
 		// object
+		
+		
 
-		TextView offset = (TextView) itemView.findViewById(R.id.offset);
-		// reassigning the xml value with R.id.user_name
-		offset.setText(Double.toString(calculations.getDaysCalOffset(0)));
+		String day = "";
 
-		TextView consumed = (TextView) itemView.findViewById(R.id.consumed);
-		// reassigning the xml value with R.id.user_name
-		consumed.setText(Double.toString(calculations.getDaysCalConsumed(0)));
+        Calendar calendar = Calendar.getInstance();
+        int weekday = calendar.get(Calendar.DAY_OF_WEEK);
 
-		TextView burnt = (TextView) itemView.findViewById(R.id.burnt);
-		// reassigning the xml value with R.id.user_name
-		burnt.setText(Double.toString(calculations.getDaysCalBurnt(0)));
+        TextView offset = (TextView) itemView.findViewById(R.id.offset);
+        // reassigning the xml value with R.id.user_name
+        offset.setText(Integer.toString((int)calculations.getDaysCalOffset((weekday+3)%7)));
 
+        TextView consumed = (TextView) itemView.findViewById(R.id.consumed);
+        // reassigning the xml value with R.id.user_name
+        consumed.setText(Integer.toString((int)calculations.getDaysCalConsumed((weekday+3)%7)));
+
+        TextView burnt = (TextView) itemView.findViewById(R.id.burnt);
+        // reassigning the xml value with R.id.user_name
+        burnt.setText(Integer.toString((int)calculations.getDaysCalBurnt((weekday+3)%7)));
+        
+        
 		TextView calorieOffset = (TextView) itemView
 				.findViewById(R.id.message_text_view_Low_Advice);
 		// reassigning the xml value with R.id.user_name
