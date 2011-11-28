@@ -220,7 +220,9 @@ public class CalBurntConsumedChart extends AbstractDemoChart {
     List<double[]> values = new ArrayList<double[]>();
     values.add(calculations.getWeekExCalBurnt());
     values.add(calculations.getWeekNuCalConsumed());
-    int[] colors = new int[] { Color.RED, Color.BLUE };
+        
+    int[] colors = new int[] { Color.rgb(0, 102, 0), Color.rgb(153,204,153)};
+    
     XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
     renderer.setOrientation(Orientation.VERTICAL);
     setChartSettings(renderer, "Weeks Calories Consumed versus Calories Burnt", "", "Calories", 0,

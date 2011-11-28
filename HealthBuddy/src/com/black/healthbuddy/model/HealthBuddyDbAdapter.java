@@ -612,7 +612,7 @@ public class HealthBuddyDbAdapter {
 		createUserNutritionLog(211, 8300, -1, "Thursdays", -1, 1);// Cornflakes
 		createUserNutritionLog(54, 1000, -1, "Thursdays", -1, 1);// Black
 																	// Coffee
-		createUserNutritionLog(11, 1000, -1, "Thursdays", -1, 1);// Mars bar
+		//createUserNutritionLog(11, 1000, -1, "Thursdays", -1, 1);// Mars bar
 		createUserNutritionLog(224, 1300, -1, "Thursdays", -1, 1);// Ham and
 																	// Swiss
 																	// cheese
@@ -627,7 +627,7 @@ public class HealthBuddyDbAdapter {
 		createUserNutritionLog(211, 8300, -1, "Fridays", -1, 1);// Cornflakes
 		createUserNutritionLog(54, 1000, -1, "Fridays", -1, 1);// Black
 																// Coffee
-		createUserNutritionLog(11, 1000, -1, "Fridays", -1, 1);// Mars bar
+		//createUserNutritionLog(11, 1000, -1, "Fridays", -1, 1);// Mars bar
 		createUserNutritionLog(224, 1300, -1, "Fridays", -1, 1);// Ham and
 																// Swiss
 																// cheese

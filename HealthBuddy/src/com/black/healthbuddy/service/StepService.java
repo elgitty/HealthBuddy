@@ -26,10 +26,8 @@ import android.os.PowerManager.WakeLock;
  * This class extends the Service class. it is in charge of starting and stopping the power, notification,
  * and sensor managers. It also passes information received from the sensor to the StepDetector.
  * 
- * This code is losely based on http://code.google.com/p/pedometer/
+ * This code is loosely based on http://code.google.com/p/pedometer/
  * 
- * @author bagilevi <bagilevi@gmail.com>
- * @author Justin Wetherell <phishman3579@gmail.com>
  */
 public class StepService extends Service implements StepListener {
     private static final Logger logger = Logger.getLogger(StepService.class.getSimpleName());
@@ -182,7 +180,17 @@ public class StepService extends Service implements StepListener {
         notification.number = steps;
         notification.when = System.currentTimeMillis();
         PendingIntent contentIntent = PendingIntent.getActivity(this, 0, passedIntent, 0);
-        notification.setLatestEventInfo(this, getText(R.string.app_name), "Total steps: "+steps, contentIntent);
+        
+        
+        /* some running things */
+        
+        notification.setLatestEventInfo(this, getText(R.string.app_name), "Idle", contentIntent);
+        
+        
+        if (steps > 10) {
+        notification.setLatestEventInfo(this, getText(R.string.app_name), "Running Detected at " +  (200 * 60 / 100000f * 60f) + "km/h" , contentIntent);
+        }
+        
         notificatioManager.notify(NOTIFY, notification);
         
         updating.set(false);

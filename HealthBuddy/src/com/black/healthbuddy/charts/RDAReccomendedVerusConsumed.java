@@ -220,7 +220,7 @@ public class RDAReccomendedVerusConsumed extends AbstractDemoChart {
     List<double[]> values = new ArrayList<double[]>();
     values.add(HealthCalculations.getRda());
     values.add(calculations.getFoodTypeAverageConSumtion());
-    int[] colors = new int[] { Color.RED, Color.BLUE };
+    int[] colors = new int[] { Color.rgb(0, 102, 0), Color.rgb(153,204,153)};
     XYMultipleSeriesRenderer renderer = buildBarRenderer(colors);
     renderer.setOrientation(Orientation.VERTICAL);
     setChartSettings(renderer, "Weeks Calories Consumed versus Calories Burnt", "FoodType", "percentage", 0,
